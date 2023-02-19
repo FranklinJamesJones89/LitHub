@@ -1,0 +1,46 @@
+
+{% extends 'lithubs/navbar.html' %}
+{% block content %}
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="{% static 'lithubs/img/parchment.png' %}">
+<title>Your Repositories</title>
+
+<!-- css -->
+<link rel="stylesheet" href="{% static 'lithubs/css/styles.css'%}">
+
+<!-- bootstrap -->
+{% bootstrap_css %}
+
+</head>
+<body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
+  <h1 class='repositories-header'>Trending</h1>
+  <hr style='color: white;'>
+  <div class='repositories-container'>
+    {% for repository in repositories %}
+    <a href="{% url 'lithubs:repository' repository.id %}" class='repositories-title'>{{ repository.title }}</a>
+    <p class='repositories-sub-text'>{{ repository.synopsis  }}</p>
+    <div class='container-fluid-main'>
+      <div class='row'>
+        <div class='col-lg-6'>
+	  <p class='repositories-sub-text1'>🟠 {{ repository.genre  }}</p>
+        </div>
+        <div class='col-lg-6'>
+	  <p class='repositories-sub-text1'> {{ repository.update  }}</p>
+        </div>
+      </div>
+    </div>
+    <hr style='color: white;'>
+    {% empty %}
+    <h1>No repositories have been created</h1>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
+{% endblock content  %}

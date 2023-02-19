@@ -1,0 +1,21 @@
+{% extends 'lithubs/navbar.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Repository</title>
+<link rel='stylesheet' href="{% static 'lithubs/css/styles.css' %}">
+</head>
+<body>
+<h1 class='repository-title'>{{ repository.title }}</h1>
+
+{% for entry in entries %}
+<p class='repository-body' style='color: white; text-align: center;'>{{ entry.text }}</p>
+{% empty %}
+<p class='repository-empty'>No entries at the moment. Get to it!</p>
+{% endfor %}
+</body>
+</html>
+{% endblock content %}
