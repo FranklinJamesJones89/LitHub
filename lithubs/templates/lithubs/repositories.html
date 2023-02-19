@@ -19,8 +19,7 @@
 
 </head>
 <body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
-  <h1 class='repositories-header'>Trending</h1>
-  <hr style='color: white;'>
+	<h1>New</h1>
   <div class='repositories-container'>
     {% for repository in repositories %}
     <a href="{% url 'lithubs:repository' repository.id %}" class='repositories-title'>{{ repository.title }}</a>

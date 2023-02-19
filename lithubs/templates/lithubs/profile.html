@@ -1,0 +1,40 @@
+{% extends 'lithubs/navbar.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lithubs: profile</title>
+
+<!-- css -->
+<link rel='stylesheet' href="{% static 'lithubs/css/styles.css' %}">
+
+<!-- bootstrap css -->
+{% bootstrap_css %}
+</head>
+<body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
+  <div class='repositories-container'>
+    <div class='container-fluid-main'>
+      <div class='row'>
+      <div class='col-lg-3'>
+  	<img class='profile-pic' src="{% static 'lithubs/img/franklin.jpg' %}" alt='profile'>
+      </div>
+	{% for repository in repositories %}
+        <div class='repo-box col-lg-3'>
+    	  <a href="{% url 'lithubs:repository' repository.id %}" class='repositories-title'>{{ repository.title }}</a>
+    	  <p class='repositories-sub-text'>{{ repository.synopsis  }}</p>
+	  <p class='repositories-sub-text1'>🟠 {{ repository.genre  }}</p>
+	  <p class='repositories-sub-text1'> {{ repository.update  }}</p>
+        </div>
+ 	{% endfor %}
+    </div>
+  </div>
+  </div>
+  <a href="{% url 'lithubs:new_repository' %}">Add a new repository</a>
+		
+</body>
+</html>
+
+{% endblock content %}

@@ -79,19 +79,22 @@
 
 /* repositories */
 .repositories-header {
-	margin-top: 10%;
+	margin-top: 5%;
 	color: violet;
 	font-size: 30px;
+	margin-bottom: 10%;
 	}
 
 .repositories-container {
-	margin-top: 5%;
+	margin-top: 12%;
+	text-align: center;
+	align-items: center;	
 	padding: 10px;
 }
 
 .repositories-title {
 	color: violet;
-	font-size: 25px;
+	font-size: 18px;
 	text-decoration: none;
 }
 
@@ -101,11 +104,13 @@
 
 .repositories-sub-text {
 	color: white;
+	font-size: 14px;
 }
 
 .repositories-sub-text1 {
 	margin-top: 3%;
 	color: white;
+	font-size: 12px;
 }
 
 /* repository */
@@ -125,4 +130,17 @@
 	margin-top: 5%;
 	text-align: center;
 	color: white;
+}
+
+/* profile */
+.profile-pic {
+	border-radius: 50%;
+	width: 250px;
+	height: 250px;
+	margin-top: -25%;
+}
+
+.repo-box {
+	border: 1px solid grey;
+	border-radius: 12px;
 }

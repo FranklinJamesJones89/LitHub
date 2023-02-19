@@ -5,6 +5,8 @@ from . import views
 app_name = 'lithubs'
 urlpatterns = [
     path('', views.index, name = 'index'),
-    path('repositories', views.repositories, name = 'repositories'),
-    path('repositories/<int:repository_id>', views.repository, name = 'repository')
+    path('profile/', views.profile, name = 'profile'),
+    path('repositories/', views.repositories, name = 'repositories'),
+    path('repositories/<int:repository_id>', views.repository, name = 'repository'),
+    path('new_repository/', views.new_repository, name = 'new_repository')
 ]
