@@ -79,17 +79,17 @@
 
 /* repositories */
 .repositories-header {
-	margin-top: 5%;
 	color: violet;
 	font-size: 30px;
-	margin-bottom: 10%;
 	}
 
 .repositories-container {
-	margin-top: 12%;
-	text-align: center;
-	align-items: center;	
-	padding: 10px;
+	margin-top: 8%;
+}
+
+.repositories-owner {
+	color: white;
+	font-size: 18px;
 }
 
 .repositories-title {
@@ -108,7 +108,6 @@
 }
 
 .repositories-sub-text1 {
-	margin-top: 3%;
 	color: white;
 	font-size: 12px;
 }
@@ -121,7 +120,6 @@
 }
 
 .repository-body {
-	margin-top: 5%;
 	text-align: center;
 	color: white;
 }
@@ -137,10 +135,101 @@
 	border-radius: 50%;
 	width: 250px;
 	height: 250px;
-	margin-top: -25%;
+	border: 4px solid white;
+	margin-top: -10%;
+	margin-left: 18%;
+	text-align: center;
 }
 
-.repo-box {
-	border: 1px solid grey;
-	border-radius: 12px;
+
+
+.profile-nav ul {
+	margin:0;
+	padding: 0;
+	color: white;
+}
+
+.profile-nav li {
+	display: inline-block;
+	color: white;
+}
+
+.contributions {
+	font-size: 18px;
+	color: orange;
+	margin-top: 2%;
+	margin-left: 25%;
+}
+
+.repositories-page-container {
+	text-align: center;
+	margin-top: 3%;
+	margin-bottom: 5%;
+	justify-content: left;
+}
+
+/* Form */
+.signup-container {
+  margin: 5% auto;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.signup-container h1 {
+  font-size: 40px;
+  font-weight: 200;
+}
+
+form {
+  padding: 20px 0;
+  position: relative;
+}
+
+.signup-form input {
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  background-color: rgba(252, 252, 252, 0.2);
+  width: 250px;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  font-weight: 300;
+}
+
+.signup-form button {
+  text-align: center;
+  appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  padding: 10px 15px;
+  color: violet;
+  border-radius: 3px;
+  width: 250px;
+  font-size: 18px;
+}
+
+.signup-notice {
+  color: white;
+  text-decoration: none;
+}
+
+.signup-notice:hover {
+  color: violet;
+}
+
+.signin-img {
+  width: 2em;
+  margin-bottom: 20px;
+}
+
+.log-out-message {
+	margin-top: 5%;
+	color: white;
+	text-align: center;
+	font-size: 25px;
 }

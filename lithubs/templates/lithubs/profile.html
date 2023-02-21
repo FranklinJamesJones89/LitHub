@@ -1,4 +1,4 @@
-{% extends 'lithubs/navbar.html' %}
+{% extends 'lithubs/profile_nav.html' %}
 {% load static %}
 {% load bootstrap5 %}
 {% block content %}
@@ -17,9 +17,10 @@
 <body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
   <div class='repositories-container'>
     <div class='container-fluid-main'>
-      <div class='row'>
+      <div class='row justify-content-end'>
       <div class='col-lg-3'>
   	<img class='profile-pic' src="{% static 'lithubs/img/franklin.jpg' %}" alt='profile'>
+	<h1 style='color: white; font-size: 18px; margin-left: 30%;'>{{ repository.owner }}</h1>
       </div>
 	{% for repository in repositories %}
         <div class='repo-box col-lg-3'>
@@ -32,7 +33,8 @@
     </div>
   </div>
   </div>
-  <a href="{% url 'lithubs:new_repository' %}">Add a new repository</a>
+	
+  <p class='contributions'>{{ contributions }} Contributions this year</p>
 		
 </body>
 </html>

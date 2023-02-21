@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import Repository
 from .forms import RepositoryForm
@@ -12,10 +14,12 @@ def index(request):
 
 def profile(request):
     repositories = Repository.objects.order_by('created')
-    context = {'repositories': repositories}
+    repo_length = Repository.objects.all()
+    contributions = len(repo_length)
+    context = {'repositories': repositories[:6], 'contributions': contributions}
     return render(request, 'lithubs/profile.html', context)
 
-def repositories(request):
+def repositories(request, username):
     repositories = Repository.objects.order_by('created')
     context = {'repositories': repositories}
     return render(request, 'lithubs/repositories.html', context)
@@ -26,6 +30,7 @@ def repository(request, repository_id):
     context = {'repository': repository, 'entries': entries}
     return render(request, 'lithubs/repository.html', context)
 
+@login_required
 def new_repository(request):
     # Add a new repository
     if request.method != 'POST':
@@ -36,7 +41,7 @@ def new_repository(request):
         form = RepositoryForm(data = request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lithubs: repositories')
+            return redirect('lithubs:repositories')
 
     # Display a blank or invalid form
     context = {'form': form}
