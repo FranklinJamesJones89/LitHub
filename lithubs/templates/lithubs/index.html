@@ -1,23 +1,8 @@
-{% extends 'lithubs/navbar.html' %}
-{% block content %}
+{% extends 'lithubs/main.html' %}
 {% load static %}
-{% load bootstrap5 %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<link rel="icon" type="image/x-icon" href="{% static 'lithubs/img/parchment.png' %}">
-<title>LitHub</title>
+{% block content %}
 
-<!-- css -->
-<link rel="stylesheet" href="{% static 'lithubs/css/styles.css'%}">
-
-<!-- bootstrap -->
-{% bootstrap_css %}
-
-</head>
-<body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
   <div class="container-fluid main">
     <div class="row">
       <div class="main-txt col-lg-6">
@@ -89,8 +74,41 @@
       </div>
     </div>
   </div>
-  <h1 id='quote'></h1>
-</body>
-<script type='text/javascript' src="{% static 'lithubs/js/index.js' %}"></script>
-</html>
+  
+  <div class='activity-header'>
+    <h1>Activity</h1>	
+  </div>
+
+  <div class="repo-container">
+	  {% for repo in repos %}
+	  <div>
+            <img class="profile-pic" src="{% static 'lithubs/img/franklin.jpg' %}">
+	    <p class="repo-owner">@{{ repo.user.username }}</p>
+	    <p class="repo-owner">{{ repo.user.email }}</p>
+	  </div>
+	  
+	  <div class="repos">
+
+		  <a href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a>
+		  <p>{{ repo.synopsis }}</p>
+		  <p>🟠 {{ repo.genre }}</p>
+
+		  <div class="repo-form-created">
+
+			  <div>
+			  <p>🟣 {{ repo.form }}</p>
+			  <a href={% url 'lithubs:update-repository' repo.id %}>Edit</a>
+			  <a href="#">delete</a>
+			  </div>
+				
+			  <div>
+			  <p>{{ repo.created|timesince }} ago</p>
+			  </div>
+
+		  </div>
+
+	  </div>
+
+	  {% endfor %}
+  </div>
 {% endblock content  %}

@@ -25,6 +25,7 @@
 	margin-top: 20%;
 }
 
+
 .features-header {
 	text-align: center;
 	color: white; 
@@ -77,159 +78,61 @@
 	left: 2%;
   }
 
+
 /* repositories */
-.repositories-header {
-	color: violet;
-	font-size: 30px;
-	}
-
-.repositories-container {
-	margin-top: 8%;
-}
-
-.repositories-owner {
-	color: white;
-	font-size: 18px;
-}
-
-.repositories-title {
-	color: violet;
-	font-size: 18px;
-	text-decoration: none;
-}
-
-.repositories-title:hover {
-	color: white;
-}
-
-.repositories-sub-text {
-	color: white;
-	font-size: 14px;
-}
-
-.repositories-sub-text1 {
-	color: white;
-	font-size: 12px;
-}
-
-/* repository */
-.repository-title {
+.repo-container {
 	margin-top: 10%;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	color: white;
+}
+
+.repo-container p {
+	color: white;
+}
+
+.repo-owner {
 	text-align: center;
-	color: white;
-}
-
-.repository-body {
-	text-align: center;
-	color: white;
-}
-
-.repository-empty {
-	margin-top: 5%;
-	text-align: center;
-	color: white;
-}
-
-/* profile */
-.profile-pic {
-	border-radius: 50%;
-	width: 250px;
-	height: 250px;
-	border: 4px solid white;
-	margin-top: -10%;
-	margin-left: 18%;
-	text-align: center;
-}
-
-
-
-.profile-nav ul {
-	margin:0;
-	padding: 0;
-	color: white;
-}
-
-.profile-nav li {
-	display: inline-block;
-	color: white;
-}
-
-.contributions {
+	margin-top: 4%;
 	font-size: 18px;
-	color: orange;
-	margin-top: 2%;
-	margin-left: 25%;
 }
 
-.repositories-page-container {
-	text-align: center;
-	margin-top: 3%;
-	margin-bottom: 5%;
-	justify-content: left;
+.repo-form-created {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
 }
 
-/* Form */
-.signup-container {
-  margin: 5% auto;
-  padding: 80px 0;
-  text-align: center;
+.repos {
+	border: 2px solid grey;
+	padding: 38px;
+	border-radius: 12px;
+	width: 90%;
+	margin-top:3%;
+	
 }
 
-.signup-container h1 {
-  font-size: 40px;
-  font-weight: 200;
-}
-
-form {
-  padding: 20px 0;
-  position: relative;
-}
-
-.signup-form input {
-  border: 1px solid rgba(252, 252, 252, 0.4);
-  background-color: rgba(252, 252, 252, 0.2);
-  width: 250px;
-  border-radius: 3px;
-  font-family: "Source Sans Pro", sans-serif;
-  padding: 10px 15px;
-  margin: 0 auto 10px auto;
-  display: block;
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  font-weight: 300;
-}
-
-.signup-form button {
-  text-align: center;
-  appearance: none;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  padding: 10px 15px;
-  color: violet;
-  border-radius: 3px;
-  width: 250px;
-  font-size: 18px;
-}
-
-.signup-notice {
-  color: white;
-  text-decoration: none;
-}
-
-.signup-notice:hover {
-  color: violet;
-}
-
-.signin-img {
-  width: 2em;
-  margin-bottom: 20px;
-}
-
-.log-out-message {
-	margin-top: 5%;
+.repos a {
+	text-decoration: none;
 	color: white;
-	text-align: center;
-	font-size: 25px;
+	font-size: 20px;
 }
+
+.repos h4 {
+	color: orange;
+}
+
+.activity-header {
+	text-align: center;
+	color: orange;
+}
+
+	/* profile */
+.profile-pic {
+	margin-left: 30%;
+	border-radius: 50%;
+	width: 125px;
+	height: 125px;
+	border: 2px solid white;
+}
+
+/* Repository Form */

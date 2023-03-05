@@ -1,8 +1,5 @@
 {% load static %}
-{% load bootstrap5 %}
-{% bootstrap_css %}
 
-<body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
 <nav class="navbar navbar-expand-lg" style='background-color: none;'>
   <div class="container-fluid">
     <img src="{% static 'lithubs/img/parchment.png' %}" style='width: 50px'>
@@ -12,28 +9,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-	{% if user.is_authenticated %}
         <li class="nav-item">
-	  <a class="nav-link active" style='color: white' aria-current="page" href="#">{{ user.username }}</a>
+	 <a href="{% url 'lithubs:repository-form' %}"class="nav-link" style='color:white' href="">Create</a>
         </li>
         <li class="nav-item">
-	  <a class="nav-link" style='color:white' href="{% url 'lithubs:repositories' %}">Repositories</a>
+		<a class="nav-link" style='color:white' href="">Repositories</a>
         </li>
         <li class="nav-item">
-	  <a class="nav-link" style='color:white' href="{% url 'users:logout' %}">Log out</a>
-        </li>
-	{% else %}
-        <li class="nav-item">
-		<a class="nav-link active" style='color: white' aria-current="page" href="{% url  'users:register' %}">Register</a>
+		<a class="nav-link active" style='color: white' aria-current="page" href="">Sign up</a>
         </li>
         <li class="nav-item">
-		<a class="nav-link active" style='color: white' aria-current="page" href="{% url  'users:login' %}">Log in</a>
+		<a class="nav-link active" style='color: white' aria-current="page" href="">Login</a>
         </li>
         <li class="nav-item">
-	  <a class="nav-link" style='color:white' href="{% url 'lithubs:repositories' %}">Repositories</a>
+		<a class="nav-link" style='color:white' href="">About</a>
+        </li>
+        <li class="nav-item">
         </li>
       </ul>
-      {% endif %}
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -41,6 +34,6 @@
     </div>
   </div>
 </nav>
-</body>
 
+<script type='text' src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 {% block content%}{% endblock content %}

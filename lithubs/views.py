@@ -1,50 +1,46 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
-from .models import Repository
+from .models import User, Repository
 from .forms import RepositoryForm
-
-import random
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'lithubs/index.html')
+    repos = Repository.objects.all()
+    context = {'repos': repos}
 
-def profile(request):
-    repositories = Repository.objects.order_by('created')
-    repo_length = Repository.objects.all()
-    contributions = len(repo_length)
-    context = {'repositories': repositories[:6], 'contributions': contributions}
-    return render(request, 'lithubs/profile.html', context)
+    return render(request, 'lithubs/index.html', context)
 
-def repositories(request, username):
-    repositories = Repository.objects.order_by('created')
-    context = {'repositories': repositories}
-    return render(request, 'lithubs/repositories.html', context)
-
-def repository(request, repository_id):
-    repository = Repository.objects.get(id = repository_id)
-    entries = repository.entry_set.order_by('-created')
-    context = {'repository': repository, 'entries': entries}
+def repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+    context = {'repo': repo}
+    
     return render(request, 'lithubs/repository.html', context)
 
-@login_required
-def new_repository(request):
-    # Add a new repository
-    if request.method != 'POST':
-        # No data submitted; create a blank form
-        form = RepositoryForm()
-    else:
-        # POST data submittted; process data
-        form = RepositoryForm(data = request.POST)
+def repository_form(request):
+    form = RepositoryForm()
+
+    if request.method == 'POST':
+        form = RepositoryForm(request.POST)
+
         if form.is_valid():
             form.save()
-            return redirect('lithubs:repositories')
+            return redirect('lithubs:index')
 
-    # Display a blank or invalid form
     context = {'form': form}
-    return render(request, 'lithubs/new_repository.html', context)
+    return render(request, 'lithubs/repository_form.html', context)
 
+def update_repository(request, pk):
+    repository = Repository.objects.get(id=pk)
 
+    # Prefill the room data with initial = repository as parameter
+    form = RepositoryForm(instance = repository)
+    
+    if request.method == 'POST':
+        form = RepositoryForm(request.POST, instance = repository)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('lithubs:index')
+
+    context = {'form': form}
+    return render(request, 'lithubs/repository_form.html', context)

@@ -1,8 +1,7 @@
-from django import forms
-
+from django.forms import ModelForm
 from .models import Repository
 
-class RepositoryForm(forms.ModelForm):
+class RepositoryForm(ModelForm):
     class Meta:
         model = Repository
-        fields = ['title', 'synopsis', 'genre']
+        fields = '__all__'
