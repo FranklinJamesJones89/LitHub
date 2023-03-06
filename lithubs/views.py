@@ -18,10 +18,10 @@ def repository(request, pk):
 
 def repository_form(request):
     form = RepositoryForm()
-
+    
     if request.method == 'POST':
         form = RepositoryForm(request.POST)
-
+        print(form)
         if form.is_valid():
             form.save()
             return redirect('lithubs:index')
@@ -44,3 +44,9 @@ def update_repository(request, pk):
 
     context = {'form': form}
     return render(request, 'lithubs/repository_form.html', context)
+
+def explore(request):
+    repository = Repository.objects.all()
+    context = {'repository': repository}
+    
+    return render(request, 'lithubs/explore.html', context)

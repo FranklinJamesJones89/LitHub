@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('repository/<str:pk>/', views.repository, name = 'repository'),
     path('repository-form/', views.repository_form, name = 'repository-form'),
-    path('update-repository/<str:pk>/', views.update_repository, name = 'update-repository')
+    path('update-repository/<str:pk>/', views.update_repository, name = 'update-repository'),
+    path('explore/', views.explore, name = 'explore')
 ]

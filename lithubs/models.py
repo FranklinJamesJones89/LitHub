@@ -21,6 +21,8 @@ class Repository(models.Model):
     text = models.TextField(blank = True)
     created = models.DateTimeField(auto_now_add = True)
     updated = models.DateTimeField(auto_now = True)
+    #avatar = models.ImageField(upload_to = 'uploads/', null = True, blank = True)
+    #file = models.FileField(upload_to = 'uploads/', null = True, blank = True)
 
     def __str__(self):
         return self.title

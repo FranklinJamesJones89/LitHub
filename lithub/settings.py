@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-n!tv059x3%ji*f(zjkpg=vmw_xp&bgt8#&zfn(hd0--c_rrs9%'
 
@@ -55,6 +54,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'lithubs/static/media'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'lithubs/static'
+]
 
 ROOT_URLCONF = 'lithub.urls'
 
