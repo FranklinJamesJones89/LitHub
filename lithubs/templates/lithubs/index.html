@@ -74,41 +74,5 @@
       </div>
     </div>
   </div>
-  
-  <div class='activity-header'>
-    <h1>Activity</h1>	
-  </div>
-
-  <div class="repo-container">
-	  {% for repo in repos %}
-	  <div>
-            <img class="profile-pic" src="{% static 'lithubs/img/franklin.jpg' %}">
-	    <p class="repo-owner">@{{ repo.user.username }}</p>
-	    <p class="repo-owner">{{ repo.user.email }}</p>
-	  </div>
-	  
-	  <div class="repos">
-
-		  <a href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a>
-		  <p>{{ repo.synopsis }}</p>
-		  <p>🟠 {{ repo.genre }}</p>
-
-		  <div class="repo-form-created">
-
-			  <div>
-			  <p>🟣 {{ repo.form }}</p>
-			  <a href={% url 'lithubs:update-repository' repo.id %}>Edit</a>
-			  <a href="#">delete</a>
-			  </div>
-				
-			  <div>
-			  <p>{{ repo.created|timesince }} ago</p>
-			  </div>
-
-		  </div>
-
-	  </div>
-
-	  {% endfor %}
-  </div>
+ 
 {% endblock content  %}

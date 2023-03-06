@@ -1,8 +1,35 @@
-{% block content %}
-<div>
-	{% for repo in repos %}
-	<h1>{{ repo.title }}</h1>
-	{% endfor %}
-</div>
-{% endblock content %}
+{% load static %}  
+<div class='activity-header'>
+    <h1>Trending</h1>	
+    <p>See whats trending in the LitHub community</p>
+  </div>
+
+  <div class="repo-container">
+	  {% for repo in repos %}
+	  
+	  <div class="repos">
+		  <p id="repo-owner">📃 {{ repo.user.username }}</p>
+		  <p id="repo-owner-email">{{ repo.user.email }}</p>
+		  <a href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a>
+		  <p>{{ repo.synopsis }}</p>
+		  <p>🟠 {{ repo.genre }}</p>
+
+		  <div class="repo-form-created">
+
+			  <div>
+			  <p>🟣 {{ repo.form }}</p>
+			  <a id="repo-edit" href={% url 'lithubs:update-repository' repo.id %}>Edit</a>
+			  <a id="repo-edit" href="#">delete</a>
+			  </div>
+				
+			  <div>
+			  <p>{{ repo.created|timesince }} ago</p>
+			  </div>
+
+		  </div>
+
+	  </div>
+
+	  {% endfor %}
+  </div>
 
