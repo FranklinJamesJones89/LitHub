@@ -1,0 +1,32 @@
+{% extends 'lithubs/main.html' %}
+
+{% block content %}
+
+<div class="rooms-header">
+	<h1>Join the discussion</h1>
+	<hr>
+	<p style="color:white; text-align: center;">Please follow policy guidelines. Any criticism should be constructive</p>
+</div>
+
+<div class="rooms-wrapper">
+	<div>
+		<h1 style="color: white; font-size: 18px;">Browse Rooms</h1>
+	</div>
+	
+
+
+	<div>
+		<a style="color:white;" href="{% url 'lithubs:create-room' %}">Create Room</a>
+	  {% for room in rooms %}
+	  <div style="color:white; background-color:#222831; border: 1px solid white; border-radius: 12px;padding: 20px; margin-right: 5%">
+		  <h3 style="font-size: 18px;">@{{ room.host.username }}</h3>
+		  <h4 style="font-size: 14px;">{{ room.id }} -- <a style="color:white; text-decoration:none;"href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a></h3>
+		  <small>{{ room.repository }}</small>
+		  <hr>
+	  </div>
+	  {% endfor %}
+	</div>
+
+</div>
+
+{% endblock content %}

@@ -109,20 +109,44 @@
 	
 }
 
+.activity-wrapper {
+	margin:0 auto;
+	width: 80%;
+}
+
 .activity-container {
 	background-color: #222831;
 	border: 1px solid white;
 	border-radius: 12px;
 	color: white;
-	margin-right: 20%;
 	padding: 12px;
 
 }
 
-.activity-browse-container {
-	color: white;
+/* Rooms */
+.rooms-header {
+  margin: 10% auto; /* center the div horizontally */
+	background-color: #222831;
+	border: 1px solid white;
+	padding: 50px;
 }
 
+.rooms-header h1 {
+	color: white;
+	text-align: center;
+}
+
+
+.rooms-header hr {
+	margin:0 auto;
+	color: white;
+	text-align: center;
+}
+
+.rooms-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
 
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import User, Repository
-from .forms import RepositoryForm
+from .models import User, Repository, Room
+from .forms import RepositoryForm, RoomForm
 
 # Create your views here.
 
@@ -59,8 +59,22 @@ def delete_repository(request, pk):
 def explore(request):
     q = request.GET.get('q')
     repos = Repository.objects.all()
-    genre = Repository.objects.filter(genre = q)
+    genre = Repository.objects.filter(genre = 'q')
     context = {'repos': repos, 'genre': genre}
     return render(request, 'lithubs/explore.html', context)
 
+def rooms(request):
+    rooms = Room.objects.all()
+    context = {'rooms': rooms}
+    return render(request, 'lithubs/rooms.html', context)
 
+def room(request, pk):
+    rooms = Room.objects.get(id = pk)
+    context = {'rooms': rooms}
+    return render(request, 'lithubs/room.html', context)
+
+
+def create_room(request):
+    form = RoomForm()
+    context = {'form':form}
+    return render(request, 'lithubs/room_form.html', context)
