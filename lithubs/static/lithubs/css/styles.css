@@ -1,7 +1,7 @@
 /* main */
 
 .main {
-  margin-top: 15%; } .main-header {
+  margin-top: 15%; 
   font-size: 80px;
   font-weight: bold;
   color: white;
@@ -36,6 +36,7 @@
 .features-paragraph{
 	color: white;
 	margin-top: 8%;
+	font-size: 15px;
 }
 
 /* hero */
@@ -79,83 +80,51 @@
   }
 
 
-/* repositories */
-.repo-container {
-	margin-top: 10%;
-	display: grid;
+/* activity */
+
+.activity-header {
+  margin: 10% auto; /* center the div horizontally */
+	background-color: #222831;
+	border: 1px solid white;
+	padding: 20px;
+}
+
+.activity-header h1 {
+	text-align: center;
 	color: white;
 }
 
-.repo-container p {
-	color: white;
-}
-
-
-.repo-form-created {
+.form-created-grid {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 }
 
-#repo-owner {
-	color: orange;
-	font-size: 20px;
-}
-
-#repo-edit {
-	font-size: 12px;
-}
-
-.repos {
-	margin:0 auto;
-	border: 2px solid grey;
-	border-radius: 12px;
-	width: 90%;
+.activity-repos {
 	background-color: #222831;
-	padding: 12px;
+	border: 1px solid white;
+	margin: 0 auto;
+	width: 80%;
+	padding: 15px;
+	border-radius: 12px;
 	
 }
 
-.repos a {
-	text-decoration: none;
-	color: white;
-	font-size: 18px;
-}
-
-.repos p {
-	font-size: 14px;
-}
-
-.repos h4 {
-	color: orange;
-}
-
-.activity-header {
-	margin:5% auto;
-	text-align: center;
-	color: white;
-	padding: 40px;
+.activity-container {
 	background-color: #222831;
-	border: .25px solid white;
-
-}
-
-	/* profile */
-.profile-pic {
-	margin-left: 30%;
-	border-radius: 50%;
-	width: 125px;
-	height: 125px;
-	border: 2px solid white;
-}
-
-/*.explore-container {
-	margin: 5% auto;
-	background-color: #222831;
-	padding: 40px;
 	border: 1px solid white;
-}*/
-
-/*.explore-container h1, p {
+	border-radius: 12px;
 	color: white;
-	text-align: center;
-}*/
+	margin-right: 20%;
+	padding: 12px;
+
+}
+
+.activity-browse-container {
+	color: white;
+}
+
+
+
+
+
+

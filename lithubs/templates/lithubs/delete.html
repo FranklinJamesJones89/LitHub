@@ -4,9 +4,9 @@
 
 <form method='POST' action="">
 	{% csrf_token %}
-	<p>Are you sure want to delete "{{ obj }}"?</p>
+	<p style="color:white;">Are you sure want to delete "{{ obj }}"?</p>
+	<a style="text-decoration:none; color:white;"href="{{ request.META.HTTP_REFERER }}">Back</a>
 	<input type="submit" value="Confirm">
-	<a></a>
 </form>
 
 {% endblock content %}

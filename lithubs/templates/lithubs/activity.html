@@ -1,35 +1,39 @@
 {% load static %}  
-<div class='activity-header'>
-    <h1>Trending</h1>	
-    <p>See whats trending in the LitHub community</p>
-  </div>
 
-  <div class="repo-container">
-	  {% for repo in repos %}
-	  
-	  <div class="repos">
-		  <p id="repo-owner">📃 {{ repo.user.username }}</p>
-		  <p id="repo-owner-email">{{ repo.user.email }}</p>
-		  <a href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a>
-		  <p>{{ repo.synopsis }}</p>
-		  <p>🟠 {{ repo.genre }}</p>
+{% block content %}
+<div class="activity-header">
+  <h1>Trending</h1>	
+  <hr style="color:white; margin:0 auto;">
+  <p style="color:white; text-align: center; margin-top: 1%;">See whats trending in the LitHub community</p>
+</div>
 
-		  <div class="repo-form-created">
+<div style="display: grid; grid-template-columns: 1fr 3fr;">
+	<div class="activity-browse-container">
+	<h3>Browse</h3>
+	{% for repo in norepeats %}
+	<a style="display:block;"href="{% url 'lithubs:explore' %}?={{ repo.genre }}">{{ repo.genre }}</a>
+	{% endfor %}
+	</div>
+	<div>
+		{% for repo in repos %}
+		<div class="activity-container">
+			<span>@{{ repo.user }}</span>
+			<h4>{{ repo.title }}</h4>
+			<p style="color: #5585b5;">{{ repo.synopsis }}</p>
+			<p>🟣 {{ repo.genre }}</p>
 
-			  <div>
-			  <p>🟣 {{ repo.form }}</p>
-			  <a id="repo-edit" href={% url 'lithubs:update-repository' repo.id %}>Edit</a>
-			  <a id="repo-edit" href="#">delete</a>
-			  </div>
-				
-			  <div>
-			  <p>{{ repo.created|timesince }} ago</p>
-			  </div>
+			<div style="display:grid; grid-template-columns: 3fr 1fr;">
+					<div>
+				<p>🟠 {{ repo.form }}</p>
+					</div>
+					<div>
+				<p>{{ repo.created|timesince }} ago</p>
+					</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 
-		  </div>
+</div>
 
-	  </div>
-
-	  {% endfor %}
-  </div>
-
+{% endblock content %}
