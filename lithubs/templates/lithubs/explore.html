@@ -18,6 +18,8 @@
 	  <div class="explore-form-created">
 	    <div>
 	      <p>🟣 {{ repo.form }}</p>
+	      <a href="{% url 'lithubs:update-repository' repo.id %}">Edit</a>
+	      <a href="{% url 'lithubs:delete-repository' repo.id %}">Delete</a>
 	    </div>
 
 	    <div>

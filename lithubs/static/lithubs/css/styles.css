@@ -121,6 +121,7 @@
 }
 
 .explore-feed-synopsis {
+	padding: 5px;
 	color: var(--secondary-color);
 }
 
@@ -129,7 +130,10 @@
 	grid-template-columns: 3fr 1fr;
 }
 
-
+/* Delete form */
+.repository-delete-paragraph {
+	color: white;
+}
 
 
 
