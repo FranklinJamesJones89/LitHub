@@ -8,7 +8,10 @@ class Repository(models.Model):
     title = models.CharField(max_length = 200)
     synopsis = models.TextField()
     genre = models.CharField(max_length = 200)
-    form = models.CharfField(max_length = 200)
+    form = models.CharField(max_length = 200)
+    body = models.TextField()
+    updated = models.DateTimeField(auto_now = True)
+    created = models.DateTimeField(auto_now_add = True)
 
     class Meta:
         verbose_name_plural = 'repositories'
