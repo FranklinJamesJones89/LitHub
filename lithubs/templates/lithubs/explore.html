@@ -1,0 +1,32 @@
+{% extends 'lithubs/main.html' %}
+
+{% block content %}
+
+<div class="explore-wrapper">
+  <h1 class="explore-header">Trending</h1>
+  <hr class="explore-hr">
+  <p class="explore-sub-header">See what's trending in the LitHub community</p>
+</div>
+
+  {% for repo in repos %}
+<div class="explore-feed-wrapper">
+	  <p>@{{ repo.user }}</p>
+	  <p>{{ repo.title }}</p>
+	  <p>{{ repo.synopsis }}</p>
+	  <p>🟠 {{ repo.genre }}</p>
+
+	  <div class="explore-form-created">
+	    <div>
+	      <p>🟣 {{ repo.form }}</p>
+	    </div>
+
+	    <div>
+	      <p>{{ repo.created|timesince }} ago</p>
+	    </div>
+
+	  </div>
+	</div>
+</div>
+  {% endfor %} 
+
+{% endblock content %}

@@ -83,49 +83,44 @@
   }
 
 
-/* activity */
-
-.activity-header {
-  margin: 10% auto; /* center the div horizontally */
+/* Explore */
+.explore-wrapper {
+	margin: 8% auto;	
 	background-color: #222831;
-	border: 1px solid white;
+	color:white;
 	padding: 20px;
-}
-
-.activity-header h1 {
-	text-align: center;
-	color: white;
-}
-
-.form-created-grid {
-	display: grid;
-	grid-template-columns: 3fr 1fr;
-}
-
-.activity-repos {
-	background-color: #222831;
 	border: 1px solid white;
-	margin: 0 auto;
+}
+
+.explore-header {
+	text-align: center;
+}
+
+.explore-hr {
+	margin:0 auto;
+	width: 50%;
+}
+
+
+.explore-sub-header {
+	text-align: center;
+}
+
+.explore-feed-wrapper {
+	margin: 5% auto;	
+	background-color: #222831;
 	width: 80%;
-	padding: 15px;
-	border-radius: 12px;
+	border-radius:12px;
+	color:white;
+	padding: 20px;
+	border: 1px solid white;
 	
 }
 
-.activity-wrapper {
-	margin:0 auto;
-	width: 80%;
+.explore-form-created {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
 }
-
-.activity-container {
-	background-color: #222831;
-	border: 1px solid white;
-	border-radius: 12px;
-	color: white;
-	padding: 12px;
-
-}
-
 
 
 
