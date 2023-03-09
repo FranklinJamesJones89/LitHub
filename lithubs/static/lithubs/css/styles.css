@@ -1,5 +1,9 @@
-/* main */
+:root {
+	--primary-color: #222831;
+	--secondary-color: #66bfbf;
+}
 
+/* main */
 .main {
   margin-top: 15%; 
   font-weight: bold;
@@ -86,7 +90,7 @@
 /* Explore */
 .explore-wrapper {
 	margin: 8% auto;	
-	background-color: #222831;
+	background-color: var(--primary-color);
 	color:white;
 	padding: 20px;
 	border: 1px solid white;
@@ -108,13 +112,16 @@
 
 .explore-feed-wrapper {
 	margin: 5% auto;	
-	background-color: #222831;
+	background-color: var(--primary-color);
 	width: 80%;
 	border-radius:12px;
 	color:white;
 	padding: 20px;
 	border: 1px solid white;
-	
+}
+
+.explore-feed-synopsis {
+	color: var(--secondary-color);
 }
 
 .explore-form-created {
