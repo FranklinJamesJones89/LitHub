@@ -1,0 +1,134 @@
+/* main */
+
+.main {
+  margin-top: 15%; 
+  font-weight: bold;
+  color: white;
+}
+
+.main-header {
+	font-size: 80px;
+}
+
+.main-sub-header {
+	color: white;
+	font-size: 30px;
+}
+
+/* features */
+.features-icon {
+	background-color: purple;
+	border-radius: 50%;
+	width: 100px;
+	text-align: center;
+}
+
+.features-icon-container {
+	text-align: center;	
+	margin-top: 20%;
+}
+
+
+.features-header {
+	text-align: center;
+	color: white; 
+	margin-bottom: 10%;
+	font-size: 30px;
+}
+
+.features-paragraph{
+	color: white;
+	margin-top: 8%;
+	font-size: 15px;
+}
+
+/* hero */
+.hero-container {
+	margin-top: 15%;
+}
+
+.hero-header {
+	color: white;
+}
+
+.lead {
+	color: white;
+}
+
+.study-img {
+	border-radius: 12px;
+}
+
+.key-img {
+	width: 10vw;
+}
+  
+  /* Vertical line */
+  
+  hr {
+	width: 80%;
+	height: 8px;
+	margin-left: -50%;
+	background-color:green;
+	border: 0 none;
+	margin-top: 100px;
+	margin-bottom:100px;
+  }
+  
+  .vl {
+	border-left: 6px solid #834c83;
+	height: 100%;
+	position: absolute;
+	left: 2%;
+  }
+
+
+/* activity */
+
+.activity-header {
+  margin: 10% auto; /* center the div horizontally */
+	background-color: #222831;
+	border: 1px solid white;
+	padding: 20px;
+}
+
+.activity-header h1 {
+	text-align: center;
+	color: white;
+}
+
+.form-created-grid {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+}
+
+.activity-repos {
+	background-color: #222831;
+	border: 1px solid white;
+	margin: 0 auto;
+	width: 80%;
+	padding: 15px;
+	border-radius: 12px;
+	
+}
+
+.activity-wrapper {
+	margin:0 auto;
+	width: 80%;
+}
+
+.activity-container {
+	background-color: #222831;
+	border: 1px solid white;
+	border-radius: 12px;
+	color: white;
+	padding: 12px;
+
+}
+
+
+
+
+
+
+
