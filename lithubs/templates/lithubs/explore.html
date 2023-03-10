@@ -18,8 +18,10 @@
 	  <div class="explore-form-created">
 	    <div>
 	      <p>🟣 {{ repo.form }}</p>
+	      {% if request.user == repo.user %}
 	      <a href="{% url 'lithubs:update-repository' repo.id %}">Edit</a>
 	      <a href="{% url 'lithubs:delete-repository' repo.id %}">Delete</a>
+	      {% endif %}
 	    </div>
 
 	    <div>

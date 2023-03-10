@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from . forms import RepositoryForm
@@ -11,6 +13,10 @@ def index(request):
     return render(request, 'lithubs/index.html')
 
 def login_page(request):
+    page = 'login'
+    if request.user.is_authenticated:
+        return redirect('lithubs:index')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -28,8 +34,15 @@ def login_page(request):
         else:
             messages.error(request, 'Username or password does not exist')
 
-    context = {}
+    context = {'page': page}
     return render(request, 'lithubs/login_register.html', context)
+
+def register(request):
+    return render(request, 'lithubs/login_register.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('lithubs:index')
 
 def explore(request):
     repos = Repository.objects.all()
@@ -37,6 +50,7 @@ def explore(request):
     
     return render(request, 'lithubs/explore.html', context)
 
+@login_required(login_url = 'lithubs:login')
 def create_repository(request):
     form = RepositoryForm()
     
@@ -49,9 +63,14 @@ def create_repository(request):
     context = {'form': form}
     return render(request, 'lithubs/repository_create_form.html' , context)
 
+@login_required(login_url = 'lithubs:login')
 def update_repository(request, pk):
     repo = Repository.objects.get(id = pk)
     form = RepositoryForm(instance = repo)
+
+    if request.user != repo.user:
+        return HttpResponse('You are not the owner')
+
 
     if request.method == 'POST':
         form = RepositoryForm(request.POST, instance = repo)
@@ -63,8 +82,12 @@ def update_repository(request, pk):
     context = {'form': form}
     return render(request, 'lithubs/repository_create_form.html', context)
 
+@login_required(login_url = 'lithubs:login')
 def delete_repository(request, pk):
     repo = Repository.objects.get(id = pk)
+    
+    if request.user != repo.user:
+        return HttpResponse('You are not the owner')
 
     if request.method == 'POST':
         repo.delete()
