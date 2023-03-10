@@ -135,6 +135,21 @@
 	color: white;
 }
 
+/* login-register form */
+.login-register-form {
+	margin: 0 auto;
+	width: 22%;
+}
 
+.login-register-form-icon {
+	display: block;
+	margin:5% auto;
+}
 
+.login-register-form-input {
+	background-color: var(--primary-color);
+}
 
+#date {
+	text-align: center;
+}

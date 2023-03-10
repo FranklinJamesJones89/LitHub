@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from . forms import RepositoryForm
 from . models import Repository
 
@@ -6,6 +9,27 @@ from . models import Repository
 
 def index(request):
     return render(request, 'lithubs/index.html')
+
+def login_page(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        try:
+            user = User.objects.get(username = username)
+        except:
+            messages.error(request, 'No such user')
+
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('lithubs:index')
+        else:
+            messages.error(request, 'Username or password does not exist')
+
+    context = {}
+    return render(request, 'lithubs/login_register.html', context)
 
 def explore(request):
     repos = Repository.objects.all()
@@ -47,3 +71,5 @@ def delete_repository(request, pk):
         return redirect('lithubs:index')
 
     return render(request, 'lithubs/delete.html', {'obj' : repo})
+
+

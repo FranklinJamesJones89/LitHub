@@ -14,11 +14,19 @@
 
 </head>
 <body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
-	{% include 'lithubs/navbar.html' %}
+{% include 'lithubs/navbar.html' %}
 
-	{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li style="color:white; list-style:none; text-align:center; font-size: 25px;">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
-	{% endblock content %}
+{% block content %}
 
+{% endblock content %}
+<script src="{% static 'lithubs/js/index.js' %}"></script>
 </body>
 </html>

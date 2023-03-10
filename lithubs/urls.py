@@ -8,5 +8,6 @@ urlpatterns = [
     path('explore', views.explore, name = 'explore'),
     path('create-repository', views.create_repository, name = 'create-repository'),
     path('update-repository/<str:pk>/', views.update_repository, name = 'update-repository'),
-    path('delete/<str:pk>/', views.delete_repository, name = 'delete-repository')
+    path('delete/<str:pk>/', views.delete_repository, name = 'delete-repository'),
+    path('login_register', views.login_page, name = 'login')
 ]
