@@ -4,13 +4,20 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from . forms import RepositoryForm
+from . forms import RepositoryForm, MyUserCreationForm
 from . models import Repository
 
 # Create your views here.
 
 def index(request):
     return render(request, 'lithubs/index.html')
+
+def profile(request, pk):
+    user = User.objects.get(id = pk)
+    repos = user.repository_set.all()
+    context = {'user': user, 'repos': repos}
+
+    return render(request, 'lithubs/profile.html', context)
 
 def login_page(request):
     page = 'login'
@@ -38,7 +45,23 @@ def login_page(request):
     return render(request, 'lithubs/login_register.html', context)
 
 def register(request):
-    return render(request, 'lithubs/login_register.html')
+    form = MyUserCreationForm()
+
+    if request.method == 'POST':
+        form = MyUserCreationForm(request.POST)
+        
+        if form.is_valid():
+            user = form.save(commit = False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+
+            return redirect('lithubs:index')
+
+        else:
+            messages.error(request, 'An error occured during registration')
+
+    return render(request, 'lithubs/login_register.html', {'form': form})
 
 def logout_user(request):
     logout(request)

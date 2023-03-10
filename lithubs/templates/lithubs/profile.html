@@ -1,0 +1,13 @@
+{% extends 'lithubs/main.html' %}
+
+{% block content %}
+
+
+<h1>{{ user.username }}</h1>
+
+{% for repo in repos %}
+<p>{{repo.title}}</p>
+
+{% endfor %}
+
+{% endblock content %}
