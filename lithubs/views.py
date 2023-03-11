@@ -14,8 +14,11 @@ def index(request):
 
 def profile(request, pk):
     user = User.objects.get(id = pk)
-    repos = user.repository_set.all()
+    repos = user.repository_set.all()[:6]
+
     context = {'user': user, 'repos': repos}
+
+    print(context)
 
     return render(request, 'lithubs/profile.html', context)
 
@@ -79,8 +82,12 @@ def create_repository(request):
     
     if request.method == 'POST':
         form = RepositoryForm(request.POST)
+
         if form.is_valid():
-            form.save()
+            repository = form.save(commit = False)
+            repository.user = request.user
+            repository.save()
+
             return redirect('lithubs:index')
 
     context = {'form': form}

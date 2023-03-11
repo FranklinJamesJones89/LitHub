@@ -7,6 +7,7 @@ class RepositoryForm(ModelForm):
     class Meta:
         model = Repository
         fields = '__all__'
+        exclude = ['user']
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:

@@ -1,0 +1,25 @@
+{% load static %}
+	<div style="width: 90%; margin:0 auto;"class="">
+		{% for repo in repos %}
+		<div class="profile-repo-container">
+			<p>@{{ repo.user }}</p>
+			<p>{{ repo.title }}</p>
+			<p id="repository-feed-synopsis">{{ repo.synopsis }}</p>
+			<p>🟣 {{ repo.genre }}</p>
+
+			<div class="profile-repo-form-created-grid">
+				<div>
+					<p>🟠 {{ repo.form }}</p>
+					{% if request.user == repo.user %}
+					<a href="{% url 'lithubs:update-repository' repo.id %}"><i style="color:white; padding: 5px;"class="fa fa-pen"></i></a>
+					<a href="{% url 'lithubs:delete-repository' repo.id %}"><i style="color:white" class="fa fa-trash fa-1x"></i></a>
+					{% endif %}
+				</div>
+
+				<div>
+					<p>{{ repo.created|timesince }} ago</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
