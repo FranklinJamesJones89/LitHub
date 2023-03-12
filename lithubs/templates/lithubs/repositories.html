@@ -1,0 +1,15 @@
+{% extends 'lithubs/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="profile-wrapper">
+	<div class="profile-img-wrapper">
+	  <img class="profile-img" src="{% static 'lithubs/img/franklin.jpg' %}" alt="avatar">
+	  <h1 class="profile-name">{{ user.username }}</h1>
+	</div>
+	
+	{% include 'lithubs/repository_feed_component.html' %}	
+</div>
+
+{% endblock content %}

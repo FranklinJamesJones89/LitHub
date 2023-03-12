@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('explore', views.explore, name = 'explore'),
     path('profile/<str:pk>/', views.profile, name = 'profile'),
+    path('repositories/<str:pk>/', views.repositories, name = 'repositories'),
     path('repository/<str:pk>/', views.repository, name = 'repository'),
     path('create-repository', views.create_repository, name = 'create-repository'),
     path('update-repository/<str:pk>/', views.update_repository, name = 'update-repository'),

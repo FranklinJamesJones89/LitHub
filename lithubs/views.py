@@ -20,6 +20,7 @@ def profile(request, pk):
 
     return render(request, 'lithubs/profile.html', context)
 
+
 def login_page(request):
     page = 'login'
     if request.user.is_authenticated:
@@ -72,6 +73,14 @@ def repository(request, pk):
     repos = Repository.objects.get(id = pk)
     context = {'repos': repos}
     return render(request, 'lithubs/repository.html', context)
+
+def repositories(request, pk):
+    user = User.objects.get(id = pk)
+    repos = user.repository_set.all()
+
+    context = {'user': user, 'repos': repos}
+
+    return render(request, 'lithubs/profile.html', context)
 
 def explore(request):
     repos = Repository.objects.all()
