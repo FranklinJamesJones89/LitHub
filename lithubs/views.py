@@ -15,7 +15,7 @@ def index(request):
 def profile(request, pk):
     user = User.objects.get(id = pk)
     repos = user.repository_set.all()[:6]
-
+   
     context = {'user': user, 'repos': repos}
 
     print(context)

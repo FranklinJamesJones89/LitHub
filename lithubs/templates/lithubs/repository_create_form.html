@@ -1,9 +1,40 @@
 {% extends 'lithubs/main.html' %}
 
 {% block content %}
-<form method='POST' action="">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit">
-</form>
+
+
+<div class="create-repository-header-wrapper">
+<h1 class="create-repository-header">Create a new Repository</h1>
+ <hr class="create-hr">
+<p class="create-repository-paragraph">A repository contains all project files, including the revision history..</p>
+</div>
+
+<main class="form-signin w-100 m-auto">
+  <form class="login-register-form" id="create-form-wrapper" method="POST" action="">
+    {% csrf_token %}
+    <div class="form-floating">
+      <p style="color:white; font-style: italic">Repo owner: @ {{ user.username }}</p>
+      <p style="color:white; font-style: italic">Great title names are short and memorable</p>
+      <input style="background-color: #222831; color:white;"type="text" name="title" class="form-control login-register-form-input" id="floatingInput" placeholder="title">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">title</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; height: 200px;"type="text" name="synopsis" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">synopsis</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="genre" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">genre</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="form" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">form</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="body" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">body</label>
+    </div>
+    <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Submit" type="submit">Create</button>
+  </form>
+</main>
 {% endblock content %}

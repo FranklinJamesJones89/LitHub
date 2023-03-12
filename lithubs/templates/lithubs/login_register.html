@@ -30,8 +30,22 @@
 <img class="mb-4 login-register-form-icon" src="{% static 'lithubs/img/parchment.png' %}" alt="" width="72" height="57">
   <form style="color:white;"class="login-register-form" method="POST" action="">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Register">
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="username" class="form-control login-register-form-input" id="floatingInput" placeholder="name@example.com">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">username</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="password" name="password1" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">password</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="password" name="password2" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">re-type password</label>
+    </div>
+    <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Register" type="submit">Sign up</button>
+    <p style="text-align:center; color: white; margin-top: 2%;">Already have an account?</p>
+    <a style="margin-left: 40%; text-decoration: none; color: white;" href="{% url 'lithubs:login' %}">Login</a>
+    <p style="color:white;" id="date" class="mt-5 mb-3"></p>
   </form>
 
 {% endif %}

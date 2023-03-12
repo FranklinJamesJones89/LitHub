@@ -1,6 +1,7 @@
 :root {
 	--primary-color: #222831;
 	--secondary-color: #66bfbf;
+	--azure: #ffffff;
 }
 
 .nav-profile-img {
@@ -184,16 +185,17 @@
 	grid-template-columns: 3fr 1fr;
 }
 
-.profile-repo-container {
+.feed-repo-container {
 	background-color: var(--primary-color);
 	border: 1px solid white;
 	border-radius: 12px;
 	padding: 12px;
 	font-size: 12px;
+	color: white;
 }
 
 
-.profile-repo-container p {
+.repo-feed-container p {
 	color: white;
 }
 
@@ -203,15 +205,34 @@
 	font-size: 22px;
 }
 
+
 #repository-feed-synopsis {
 	color: var(--secondary-color);
 	font-size: 14px;
 }
 
-.repo-feed-img {
-	border: 2px solid white;
-	margin-left: -2%;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+/* Create repository */
+#create-form-wrapper {
+	margin-top: 5%;
+}
+.create-repository-header-wrapper {
+	background-color: var(--primary-color);
+	color: white;
+	padding: 12px;
+	border: 1px solid white;
+	margin-top: 5%;
+}
+
+
+.create-repository-header {
+	text-align: center;
+}
+
+.create-repository-paragraph {
+	text-align: center;
+}
+
+.create-hr {
+	margin:0 auto;
+	width: 50%;
 }
