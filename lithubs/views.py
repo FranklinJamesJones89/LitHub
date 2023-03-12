@@ -15,10 +15,8 @@ def index(request):
 def profile(request, pk):
     user = User.objects.get(id = pk)
     repos = user.repository_set.all()[:6]
-   
-    context = {'user': user, 'repos': repos}
 
-    print(context)
+    context = {'user': user, 'repos': repos}
 
     return render(request, 'lithubs/profile.html', context)
 
@@ -69,6 +67,11 @@ def register(request):
 def logout_user(request):
     logout(request)
     return redirect('lithubs:index')
+
+def repository(request, pk):
+    repos = Repository.objects.get(id = pk)
+    context = {'repos': repos}
+    return render(request, 'lithubs/repository.html', context)
 
 def explore(request):
     repos = Repository.objects.all()

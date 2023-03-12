@@ -3,7 +3,7 @@
 		{% for repo in repos %}
 		<div class="feed-repo-container">
 			<p>@{{ repo.user }}</p>
-			<p>{{ repo.title }}</p>
+			<p><a style="color: white; text-decoration: none;" href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a></p>
 			<p id="repository-feed-synopsis">{{ repo.synopsis }}</p>
 			<p>🟣 {{ repo.genre }}</p>
 

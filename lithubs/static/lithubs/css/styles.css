@@ -212,9 +212,6 @@
 }
 
 /* Create repository */
-#create-form-wrapper {
-	margin-top: 5%;
-}
 .create-repository-header-wrapper {
 	background-color: var(--primary-color);
 	color: white;
@@ -236,3 +233,37 @@
 	margin:0 auto;
 	width: 50%;
 }
+
+.create-repo-form {
+	background-color: var(--primary-color);
+	margin:5% auto;
+	width: 70%;
+	border: 1px solid white;
+}
+
+.create-title-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	color: var(--secondary-color);
+	padding: 12px;
+}
+
+/* Repo page */
+
+.repo-page-container {
+	background-color: var(--azure);
+	margin: 5% auto;
+	text-align: center;
+	height: 800px;
+	padding: 80px;
+	width: 90%;
+}
+
+.repo-page-title {
+}
+
+.repo-page-body {
+	margin-top: 5%;
+}
+
+

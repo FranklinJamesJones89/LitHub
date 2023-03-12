@@ -9,31 +9,76 @@
 <p class="create-repository-paragraph">A repository contains all project files, including the revision history..</p>
 </div>
 
-<main class="form-signin w-100 m-auto">
-  <form class="login-register-form" id="create-form-wrapper" method="POST" action="">
+<main class="">
+  <form class="create-repo-form"  method="POST" action="">
     {% csrf_token %}
-    <div class="form-floating">
-      <p style="color:white; font-style: italic">Repo owner: @ {{ user.username }}</p>
-      <p style="color:white; font-style: italic">Great title names are short and memorable</p>
-      <input style="background-color: #222831; color:white;"type="text" name="title" class="form-control login-register-form-input" id="floatingInput" placeholder="title">
-      <label style="color:white;"class="login-register-form-label" for="floatingInput">title</label>
+
+    <div class="create-title-grid">
+
+    <div>
+      <p>Great title names should be short and memorable *</p>
     </div>
+
     <div class="form-floating">
-      <input style="background-color: #222831; color:white; height: 200px;"type="text" name="synopsis" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
-      <label style="color:white;" class="login-register-form-label"for="floatingPassword">synopsis</label>
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="title" class=" login-register-form-input" id="floatingInput" placeholder="title">
+      <label style="color:white;"class="login-register-form-label"></label>
     </div>
+
+    </div>
+    <!-- end create-title-grid div -->
+
+    <div class="create-title-grid">
+
+    <div>
+      <p>Synopsis *</p>
+    </div>
+
     <div class="form-floating">
-      <input style="background-color: #222831; color:white;"type="text" name="genre" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
-      <label style="color:white;" class="login-register-form-label"for="floatingPassword">genre</label>
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px; height: 300px; width: 600px;"type="text" name="synopsis" class=" login-register-form-input" id="floatingInput" placeholder="synopsis">
+      <label style="color:white;"class="login-register-form-label"></label>
     </div>
+
+    </div>
+    
+    <div class="create-title-grid">
+
+    <div>
+      <p>Genre *</p>
+    </div>
+
     <div class="form-floating">
-      <input style="background-color: #222831; color:white;"type="text" name="form" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
-      <label style="color:white;" class="login-register-form-label"for="floatingPassword">form</label>
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="genre" class=" login-register-form-input" id="floatingInput" placeholder="genre">
+      <label style="color:white;"class="login-register-form-label"></label>
     </div>
+
+    </div>
+    
+    <div class="create-title-grid">
+
+    <div>
+      <p>Form *</p>
+    </div>
+
     <div class="form-floating">
-      <input style="background-color: #222831; color:white;"type="text" name="body" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
-      <label style="color:white;" class="login-register-form-label"for="floatingPassword">body</label>
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="form" class=" login-register-form-input" id="floatingInput" placeholder="form">
+      <label style="color:white;"class="login-register-form-label"></label>
     </div>
+
+    </div>
+    
+    <div class="create-title-grid">
+
+    <div>
+      <p>Body *</p>
+    </div>
+
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px; height: 600px; width: 600px;"type="text" name="body" class=" login-register-form-input" id="floatingInput" placeholder="body">
+      <label style="color:white;"class="login-register-form-label"></label>
+    </div>
+
+    </div>
+
     <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Submit" type="submit">Create</button>
   </form>
 </main>
