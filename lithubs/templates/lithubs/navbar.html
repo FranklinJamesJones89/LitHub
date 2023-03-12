@@ -14,6 +14,9 @@
 	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white'>Explore</a>
         </li>
         <li class="nav-item">
+	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white'>Discussion</a>
+        </li>
+        <li class="nav-item">
 	 <a href="{% url 'lithubs:create-repository' %}"class="nav-link" style='color:white'>Create</a>
         </li>
         <li class="nav-item dropdown">
@@ -21,11 +24,11 @@
 		  <img class="nav-profile-img" src="{% static 'lithubs/img/franklin.jpg' %}">
           </a>
           <ul class="dropdown-menu" style="background-color: #222831; color:white;">
-	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">Profile</a></li>
-	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:repositories' user.id %}">Repositories</a></li>
-            <li><a style="color: var(--secondary-color)" class="dropdown-item" href="#">⚙️ Settings</a></li>
+	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">your profile</a></li>
+	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:repositories' user.id %}">your repositories</a></li>
+            <li><a style="color: var(--secondary-color)" class="dropdown-item" href="#">⚙️ settings</a></li>
             <li><hr class="dropdown-divider"></li>
-	    <li><a style="color:white;"class="dropdown-item" href="{% url 'lithubs:logout' %}">Logout</a></li>
+	    <li><a style="color:white;"class="dropdown-item" href="{% url 'lithubs:logout' %}">logout</a></li>
           </ul>
         </li>
 

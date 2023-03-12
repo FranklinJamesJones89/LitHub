@@ -12,6 +12,9 @@ from . models import Repository
 def index(request):
     return render(request, 'lithubs/index.html')
 
+def discussion(request):
+    return render(request, 'lithubs/discussion.html')
+
 def profile(request, pk):
     user = User.objects.get(id = pk)
     repos = user.repository_set.all()[:6]
@@ -137,4 +140,6 @@ def delete_repository(request, pk):
 
     return render(request, 'lithubs/delete.html', {'obj' : repo})
 
+def room(request):
+    return render(request, 'lithubs/room.html')
 
