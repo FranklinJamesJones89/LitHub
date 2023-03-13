@@ -3,4 +3,17 @@
 {% block content %}
 
 
+<div class="discussion-wrapper">
+  <div class="browse-container">
+    <p>Browse</p>
+  </div>
+
+  <div class="room-container">
+  {% for room in rooms %}
+  <a href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
+  <p>{{ room.description }}</p>
+  {% endfor %}
+  </div>
+</div>
+
 {% endblock content %}

@@ -5,15 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from . forms import RepositoryForm, MyUserCreationForm
-from . models import Repository
+from . models import Repository, Room
 
 # Create your views here.
 
 def index(request):
     return render(request, 'lithubs/index.html')
-
-def discussion(request):
-    return render(request, 'lithubs/discussion.html')
 
 def profile(request, pk):
     user = User.objects.get(id = pk)
@@ -140,6 +137,13 @@ def delete_repository(request, pk):
 
     return render(request, 'lithubs/delete.html', {'obj' : repo})
 
-def room(request):
-    return render(request, 'lithubs/room.html')
 
+def discussion(request):
+    rooms = Room.objects.all()
+    context = {'rooms': rooms}
+    return render(request, 'lithubs/discussion.html', context)
+
+def room(request, pk):
+    room = Room.objects.get(id = pk)
+    context = {'room': room}
+    return render(request, 'lithubs/room.html', context)
