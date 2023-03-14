@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from . forms import RepositoryForm, MyUserCreationForm
-from . models import Repository, Room
+from . forms import RepositoryForm, MyUserCreationForm, RoomForm
+from . models import Repository, Room, Topic
 
 # Create your views here.
 
@@ -147,3 +147,22 @@ def room(request, pk):
     room = Room.objects.get(id = pk)
     context = {'room': room}
     return render(request, 'lithubs/room.html', context)
+
+def create_room(request):
+    form = RoomForm()
+    topics = Topic.objects.all()
+
+    if request.method == 'POST':
+        topic_name = request.POST.get('topic')
+        topic, created = Topic.objects.get_or_create(name = topic_name)
+        
+        Room.objects.create(
+            host = request.user,
+            topic = topic,
+            name = request.POST.get('name'),
+            description = request.POST.get('description')
+        )
+
+        return redirect('lithubs:discussion')
+    
+    return render(request, 'lithubs/room_form.html')

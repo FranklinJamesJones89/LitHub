@@ -1,0 +1,64 @@
+{% extends 'lithubs/main.html' %}
+
+{% block content %}
+  <form class="create-repo-form"  method="POST" action="">
+    {% csrf_token %}
+
+    <div class="create-title-grid">
+
+    <div>
+      <p>Host *</p>
+    </div>
+
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="host" class=" login-register-form-input" id="floatingInput" placeholder="host">
+      <label style="color:white;"class="login-register-form-label"></label>
+    </div>
+
+    </div>
+    <!-- end create-title-grid div -->
+
+    <div class="create-title-grid">
+
+    <div>
+      <p>topic *</p>
+    </div>
+
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px; height: 300px; width: 600px;"type="text" name="topic" class=" login-register-form-input" id="floatingInput" placeholder="topic">
+      <label style="color:white;"class="login-register-form-label"></label>
+    </div>
+
+    </div>
+    
+    <div class="name">
+
+    <div>
+      <p>name *</p>
+    </div>
+
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="name" class=" login-register-form-input" id="floatingInput" placeholder="name">
+      <label style="color:white;"class="login-register-form-label"></label>
+    </div>
+
+    </div>
+    
+    <div class="create-title-grid">
+
+    <div>
+      <p>description *</p>
+    </div>
+
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="description" class=" login-register-form-input" id="floatingInput" placeholder="description">
+      <label style="color:white;"class="login-register-form-label"></label>
+    </div>
+
+    </div>
+    
+    <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Submit" type="submit">Create</button>
+  </form>
+
+
+{% endblock content %}
