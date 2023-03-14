@@ -1,5 +1,7 @@
 {% extends 'lithubs/main.html' %}
 
+{% load static %}
+
 {% block content %}
 <div class="discussion-header-wrapper">
   <h1 class="discussion-header">Join the discussion</h1>
@@ -10,17 +12,33 @@
 <div class="discussion-wrapper">
 
   <div class="browse-container">
-    <p>Browse</p>
+    <p class="browse-paragraph">Browse</p>
+    <a class="browse-topic-name" style="display:block;" href="{% url 'lithubs:discussion' %}">All</a>
+    {% for topic in topics %}
+    <a class="browse-topic-name" href="{% url 'lithubs:discussion' %}?q={{ topic.name }}">{{ topic.name }}</a>
+    <hr>
+    {% endfor %}
   </div>
 
   <div style="width: 90%; margin:0 auto;"class="">
     <button class="discussion-create-btn"><a href="{% url 'lithubs:create-room' %}">Post</a></button>
     {% for room in rooms %}
       <div class="discussion-feed-container">
+	<img class="discussion-avatar" src="{% static 'lithubs/img/franklin.jpg' %}">
         <p>@{{ room.host }}</p>
         <a href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
         <p class="discussion-synopsis">{{ room.description }}</p>
-        <p>{{ room.topic }}</p>
+	
+	<div class="discussion-topic-grid">
+		<div>
+        <p>🟠 {{ room.topic }}</p>
+	<a href="{% url 'lithubs:update-room' room.id %}">Edit</a>
+	<a href="{% url 'lithubs:delete-room' room.id %}">Delete</a>
+		</div>
+		<div>
+        <p>{{ room.updated|timesince }} ago</p>
+		</div>
+	</div>
       </div>
     {% endfor %}
   </div>

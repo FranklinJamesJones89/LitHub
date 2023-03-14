@@ -123,7 +123,7 @@
 
 .explore-feed-wrapper {
 	margin: 5% auto;	
-	background-color: var(--primary-color);
+	background-color: var(--secondary-color);
 	width: 80%;
 	border-radius:12px;
 	color:white;
@@ -171,6 +171,16 @@
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 }
+
+@media (max-width: 1000px) {
+	.profile-wrapper {
+		display: grid;
+		grid-template-columns: 6fr; 6fr;
+
+	}
+	
+}
+
 .profile-img {
 	display: block;
 	margin: 0 auto;
@@ -239,6 +249,7 @@
 	margin:5% auto;
 	width: 70%;
 	border: 1px solid white;
+	border-radius: 12px;
 }
 
 .create-title-grid {
@@ -295,6 +306,32 @@
 	color:white;
 }
 
+@media (max-width: 1000px) {
+	.discussion-wrapper {
+		display: grid;
+		grid-template-columns: 6fr; 6fr; 6fr;
+	}
+	
+	.browse-paragraph {
+		text-align: center;
+	}
+
+}
+
+.browse-paragraph {
+	background-color: var(--primary-color);
+	border: 1px solid var(--azure);
+	border-top-right-radius: 12px;
+	padding: 8px;
+	
+}
+
+.browse-topic-name {
+	padding: 10px;
+	color: var(--secondary-color);
+}
+
+
 .discussion-feed-container {
 	background-color: var(--primary-color);
 	border: 1px solid white;
@@ -321,6 +358,19 @@
 	text-decoration: none;
 
 }
+
+.discussion-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid var(--secondary-color);
+}
+
+.discussion-topic-grid {
+	display:grid;
+	grid-template-columns: 3fr 1fr;
+}
+
 .form-title-grid {
 	display: grid;
 	grid-template-columns: 1fr 3fr;

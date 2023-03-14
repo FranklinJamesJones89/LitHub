@@ -139,8 +139,12 @@ def delete_repository(request, pk):
 
 
 def discussion(request):
-    rooms = Room.objects.all()
-    context = {'rooms': rooms}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    rooms = Room.objects.filter(topic__name__icontains = q)
+    topics = Topic.objects.all()
+
+    context = {'rooms': rooms, 'topics': topics}
+
     return render(request, 'lithubs/discussion.html', context)
 
 def room(request, pk):
@@ -166,3 +170,24 @@ def create_room(request):
         return redirect('lithubs:discussion')
     
     return render(request, 'lithubs/room_form.html')
+
+def update_room(request, pk):
+    room = Room.objects.get(id = pk)
+    form = RoomForm(instance = room)
+    
+    context = {'form': form}
+
+    return render(request, 'lithubs/room_form.html', context)
+
+def delete_room(request, pk):
+    room = Room.objects.get(id = pk)
+
+    if request.user != room.host:
+        return HttpResponse('You are not the owner')
+
+    if request.method == 'POST':
+        room.delete()
+
+        return redirect('lithubs:discussion')
+
+    return render(request, 'lithubs/delete.html', {'obj' : room})
