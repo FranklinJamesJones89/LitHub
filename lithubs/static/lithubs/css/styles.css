@@ -152,6 +152,13 @@
 	width: 22%;
 }
 
+@media (max-width: 1000px;) {
+	.login-register-form {
+		margin: 0 auto;
+		width: 50%;
+	}
+}
+
 .login-register-form-icon {
 	display: block;
 	margin:5% auto;
@@ -314,6 +321,7 @@
 	
 	.browse-paragraph {
 		text-align: center;
+		border-top-right-radius: 1px;
 	}
 
 }
@@ -331,6 +339,10 @@
 	color: var(--secondary-color);
 }
 
+.browse-container {
+	margin-top: 0%;
+}
+
 
 .discussion-feed-container {
 	background-color: var(--primary-color);
@@ -342,9 +354,7 @@
 }
 
 .discussion-synopsis {
-	color: var(--secondary-color);
-}
-
+	color: var(--secondary-color); }
 .discussion-create-btn {
 	border: none;
 	font-size: 18px;
@@ -356,6 +366,7 @@
 
 .discussion-create-btn a {
 	text-decoration: none;
+	width: 100px;
 
 }
 
@@ -369,6 +380,15 @@
 .discussion-topic-grid {
 	display:grid;
 	grid-template-columns: 3fr 1fr;
+}
+
+.discussion-activity-paragraph {
+	background-color: var(--primary-color);
+	border: 1px solid var(--azure);
+	border-top-left-radius: 12px;
+	padding: 8px;
+	margin-top: 0%;
+	
 }
 
 .form-title-grid {

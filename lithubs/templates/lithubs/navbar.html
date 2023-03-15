@@ -4,20 +4,20 @@
   <div class="container-fluid">
     <img src="{% static 'lithubs/img/parchment.png' %}" style='width: 50px'>
     <a class="navbar-brand" style='color:white; font-size: 30px;' href="{% url 'lithubs:index' %}">LitHub</a>
-    <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button style="color: white;"class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 	{% if request.user.is_authenticated %}
         <li class="nav-item">
-	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white'>Explore</a>
+	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white'>Explore |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white'>Discussion</a>
+	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white'>Discussion |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:create-repository' %}"class="nav-link" style='color:white'>Create</a>
+	 <a href="{% url 'lithubs:create-repository' %}"class="nav-link" style='color:white'>Create |</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,9 +44,8 @@
         </li>
 	{% endif %}
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" role="search" method="GET" action="{% url 'lithubs:discussion' %}">
+        <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
       </form>
     </div>
   </div>
