@@ -13,6 +13,9 @@
 
   <div class="browse-container">
     <p class="browse-paragraph">Browse</p>
+      <form class="d-flex" role="search" method="GET" action="{% url 'lithubs:discussion' %}">
+        <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
+      </form>
     <a class="browse-topic-name" style="display:block;" href="{% url 'lithubs:discussion' %}">All</a>
     <hr>
     {% for topic in topics %}

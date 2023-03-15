@@ -159,6 +159,7 @@ def room(request, pk):
     context = {'room': room}
     return render(request, 'lithubs/room.html', context)
 
+@login_required(login_url = 'lithubs:login')
 def create_room(request):
     form = RoomForm()
     topics = Topic.objects.all()
