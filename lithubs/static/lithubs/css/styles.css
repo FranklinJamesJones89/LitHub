@@ -1,7 +1,9 @@
 :root {
 	--primary-color: #222831;
 	--secondary-color: #66bfbf;
+	--third-color: #222845;
 	--azure: #ffffff;
+	--grey: #808080;
 }
 
 .nav-profile-img {
@@ -80,7 +82,7 @@
   
   /* Vertical line */
   
-  hr {
+  /*hr {
 	width: 80%;
 	height: 8px;
 	margin-left: -50%;
@@ -88,7 +90,7 @@
 	border: 0 none;
 	margin-top: 100px;
 	margin-bottom:100px;
-  }
+  }*/
   
   .vl {
 	border-left: 6px solid #834c83;
@@ -336,7 +338,8 @@
 
 .browse-topic-name {
 	padding: 10px;
-	color: var(--secondary-color);
+	color: var(--azure);
+	text-decoration: none;
 }
 
 .browse-container {
@@ -405,4 +408,91 @@
 	width: 70%;
 	border: 1px solid white;
 	border-radius: 12px;
+}
+
+/* room */
+.room-wrapper {
+	margin:5% auto;
+	display: grid;
+	width: 90%;
+	grid-template-columns: 3fr 1fr;
+	color:white;
+	font-size: 14px;
+}
+
+.room-avatar-img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 2px solid var(--azure);
+}
+
+.room-host-name {
+	margin-top: 3%;
+	color: var(--secondary-color);
+}
+
+.room-host-container {
+	background-color: var(--primary-color);
+	border: 1px solid var(--azure);
+	margin-right: 5%;
+	padding: 20px;
+}
+
+.room-conversation-container {
+	border: 1px solid var(--azure);
+	border-radius: 10px;
+	padding: 10px;
+	margin-left: 5%;
+}
+
+
+.room-description {
+	margin-top: 1%;
+	margin-left: 5%;
+}
+
+
+.room-message-host {
+	color: var(--secondary-color);
+}
+
+.room-topic {
+	margin-left: 5%;
+	color: var(--grey);
+}
+
+.room-created {
+	color: var(--grey);
+}
+
+.room-message {
+	margin-left: 5%;
+}
+
+
+.room-vl {
+	border-left: 2px solid var(--grey);
+	height: 5%;
+	position: absolute;
+}
+
+.participants-header {
+	background-color: var(--primary-color);
+	padding: 5px;
+}
+
+.room-form {
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+.room-form-input {
+	border:none;	
+	background-color: var(--grey);
+	margin: 2% 0 0 0 5%;
+	border-radius: 8px;
+	border: 1px solid var(--azure);
+	width: 95%;
+	color: var(--azure);
 }
