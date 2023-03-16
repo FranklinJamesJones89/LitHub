@@ -4,4 +4,9 @@ let currentYear = () => {
 	document.getElementById('date').innerHTML = `©️  ${date}`;
 };
 
+let onChange = () => {
+	document.getElementById('profile-menu').style.display = 'block';
+}
+
 currentYear();
+onChange();

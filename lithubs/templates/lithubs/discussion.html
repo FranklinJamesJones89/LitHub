@@ -24,14 +24,14 @@
     {% endfor %}
   </div>
 
-  <div style="width: 90%; margin:0 auto;"class="">
+  <div style="width: 90%; margin:0 auto;">
     <button class="discussion-create-btn" style="float: right; margin-top:-5%"><a style="float:right;"href="{% url 'lithubs:create-room' %}">Post</a></button>
     {% for room in rooms %}
       <div class="discussion-feed-container">
-	<img class="discussion-avatar" src="{% static 'lithubs/img/franklin.jpg' %}">
-        <p>@{{ room.host }}</p>
-        <a href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
-        <p class="discussion-synopsis">{{ room.description }}</p>
+	<span><img class="discussion-avatar" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+	<span class="discussion-feed-host"><a style="color: var(--secondary-color);" href="{% url 'lithubs:profile' user.id %}">@{{ room.host }}</a></span>
+        <a class="discussion-room-name" href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
+        <p class="discussion-description">{{ room.description }}</p>
 	
 	<div class="discussion-topic-grid">
 	  <div>
@@ -41,7 +41,7 @@
 	  </div>
 
 	  <div>
-	    <p>{{ room.updated|timesince }} ago</p>
+	    <p style="color: grey;">{{ room.updated|timesince }} ago</p>
 	  </div>
 
 	</div>
@@ -52,6 +52,20 @@
 
   <div>
     <p class="discussion-activity-paragraph" style="text-align: center;">Activity</p>
+    <div class="participants-box">
+    {% for message in room_messages %}
+      <div class="partcipants-details">
+	<span><img class="activity-avatar" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+        <span><a href="{% url 'lithubs:profile' user.id %}"class="participants-name">@{{ message.user }}</a></span>
+	<span class="activity-created">{{ message.created|timesince }} ago</span>
+	<p class="discussion-replied-to">replied to: "{{ message.room }}"</p>
+	<p class="discussion-replied-to">{{ message }}</p>
+	{% if request.user == message.user %}
+	<a href="{% url 'lithubs:delete-message' message.id %}"><i style="color: white; padding: 5px;" class="fa fa-trash discussion-replied-to"></i></a>
+	{% endif %}
+      </div>
+    {% endfor %}
+    </div>
   </div>
 
 </div>

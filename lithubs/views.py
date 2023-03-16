@@ -149,14 +149,16 @@ def discussion(request):
         )
     
     topics = Topic.objects.all()
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains = q))
 
-    context = {'rooms': rooms, 'topics': topics}
+    context = {'rooms': rooms, 'topics': topics, 'room_messages': room_messages}
 
     return render(request, 'lithubs/discussion.html', context)
 
 def room(request, pk):
     room = Room.objects.get(id = pk)
     room_messages = room.message_set.all().order_by('-created')
+    participants = room.participants.all()
 
     if request.method == 'POST':
         message = Message.objects.create(
@@ -164,10 +166,11 @@ def room(request, pk):
         room = room,
         body = request.POST.get('body')
         )
+        room.participants.add(request.user)
 
         return redirect('lithubs:room', pk = room.id)
 
-    context = {'room': room, 'room_messages': room_messages}
+    context = {'room': room, 'room_messages': room_messages, 'participants': participants}
 
     return render(request, 'lithubs/room.html', context)
 
@@ -211,3 +214,16 @@ def delete_room(request, pk):
         return redirect('lithubs:discussion')
 
     return render(request, 'lithubs/delete.html', {'obj' : room})
+
+def delete_message(request, pk):
+    message = Message.objects.get(id = pk)
+
+    if request.user != message.user:
+        return HttpResponse('You are not the owner')
+
+    if request.method == 'POST':
+        message.delete()
+
+        return redirect('lithubs:discussion')
+
+    return render(request, 'lithubs/delete.html', {'obj' : message})

@@ -4,10 +4,10 @@
 <div style="width: 90%; margin:0 auto;"class="">
   {% for repo in repos %}
     <div class="feed-repo-container">
-      <p>@{{ repo.user }}</p>
-      <p><a style="color: white; text-decoration: none;" href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a></p>
+	    <a href="{% url 'lithubs:profile' user.id %}" class="feed-repo-user">@{{ repo.user }}</a>
+      <p style="margin-top: 1%;"><a style="color: white; text-decoration: none;" href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a></p>
       <p id="repository-feed-synopsis">{{ repo.synopsis }}</p>
-      <p>🟣 {{ repo.genre }}</p>
+      <p class="repository-feed-genre">🟣 {{ repo.genre }}</p>
 
         <div class="profile-repo-form-created-grid">
 	  <div>
@@ -19,7 +19,7 @@
 	    {% endif %}
 	  </div>
 
-	  <div>
+	  <div class="repository-read-time-container">
 	    <p>{{ repo.created|timesince }} ago</p>
 	    <p>{{ repo.synopsis|length|div:200 }} min read</p>
 	  </div>

@@ -6,6 +6,10 @@
 	--grey: #808080;
 }
 
+hr {
+	color: white;
+}
+
 .nav-profile-img {
 	width: 25px;
 	height: 25px;
@@ -133,6 +137,10 @@
 	border: 1px solid white;
 }
 
+.feed-repo-user {
+	color: var(--secondary-color);
+}
+
 .explore-feed-synopsis {
 	padding: 5px;
 	color: var(--secondary-color);
@@ -141,6 +149,10 @@
 .explore-form-created {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
+}
+
+.repository-read-time-container {
+	color: var(--grey);
 }
 
 /* Delete form */
@@ -190,6 +202,10 @@
 	
 }
 
+#profile-menu {
+	display: hidden;
+}
+
 .profile-img {
 	display: block;
 	margin: 0 auto;
@@ -210,7 +226,7 @@
 	border-radius: 12px;
 	padding: 12px;
 	font-size: 12px;
-	color: white;
+	color: var(--grey);
 }
 
 
@@ -226,7 +242,7 @@
 
 
 #repository-feed-synopsis {
-	color: var(--secondary-color);
+	color: var(--azure);
 	font-size: 14px;
 }
 
@@ -295,6 +311,7 @@
 	border: 1px solid white;
 }
 
+
 .discussion-header {
 	text-align: center;
 }
@@ -304,6 +321,9 @@
 	width: 50%;
 }
 
+.discussion-feed-host {
+	color: var(--secondary-color);
+}
 
 .discussion-sub-header {
 	text-align: center;
@@ -312,7 +332,10 @@
 	margin-top: 5%;
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
-	color:white;
+}
+
+.discussion-replied-to {
+	margin-left: 14%;
 }
 
 @media (max-width: 1000px) {
@@ -333,6 +356,7 @@
 	border: 1px solid var(--azure);
 	border-top-right-radius: 12px;
 	padding: 8px;
+	color: var(--azure);
 	
 }
 
@@ -353,11 +377,14 @@
 	border-radius: 12px;
 	padding: 12px;
 	font-size: 12px;
-	color: white;
+	color: var(--grey);
 }
 
-.discussion-synopsis {
-	color: var(--secondary-color); }
+.discussion-description {
+	color: var(--azure); 
+	margin-left: 8%;
+}
+
 .discussion-create-btn {
 	border: none;
 	font-size: 18px;
@@ -383,6 +410,7 @@
 .discussion-topic-grid {
 	display:grid;
 	grid-template-columns: 3fr 1fr;
+	margin-left: 8%;
 }
 
 .discussion-activity-paragraph {
@@ -391,7 +419,15 @@
 	border-top-left-radius: 12px;
 	padding: 8px;
 	margin-top: 0%;
+	color: var(--azure);
 	
+}
+
+.discussion-room-name {
+	display: block;
+	margin-top: 1%;	
+	color: var(--azure);
+	margin-left: 8%;
 }
 
 .form-title-grid {
@@ -480,7 +516,31 @@
 .participants-header {
 	background-color: var(--primary-color);
 	padding: 5px;
+	border: 1px solid var(--azure);
 }
+
+.participants-box {
+	background-color: var(--primary-color);
+	border: 1px solid var(--azure);
+	padding: 12px;
+}
+
+.participants-name {
+	color: var(--secondary-color);
+	text-decoration: none;
+}
+
+.participants-box {
+	font-size: 12px;
+}
+
+.partcipants-details {
+	border: 1px solid var(--azure);
+	margin-top: 5%;
+	padding: 12px;
+	color: var(--azure);
+}
+
 
 .room-form {
 	margin-top: 2%;
@@ -496,3 +556,22 @@
 	width: 95%;
 	color: var(--azure);
 }
+
+.message-trash-icon {
+	margin-left: 5%;
+	color: var(--azure);
+}
+
+
+.activity-avatar {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	border: 2px solid var(--secondary-color);
+}
+
+.activity-created {
+	color: var(--grey);
+}
+
+.
