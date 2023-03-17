@@ -10,8 +10,8 @@
   <form class="login-register-form" method="POST" action="">
     {% csrf_token %}
     <div class="form-floating">
-      <input style="background-color: #222831; color:white;"type="text" name="username" class="form-control login-register-form-input" id="floatingInput" placeholder="name@example.com">
-      <label style="color:white;"class="login-register-form-label" for="floatingInput">username</label>
+      <input style="background-color: #222831; color:white;"type="text" name="email" class="form-control login-register-form-input" id="floatingInput" placeholder="name@example.com">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">email</label>
     </div>
     <div class="form-floating">
       <input style="background-color: #222831; color:white;"type="password" name="password" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
@@ -31,8 +31,16 @@
   <form style="color:white;"class="login-register-form" method="POST" action="">
     {% csrf_token %}
     <div class="form-floating">
-      <input style="background-color: #222831; color:white;"type="text" name="username" class="form-control login-register-form-input" id="floatingInput" placeholder="name@example.com">
+      <input style="background-color: #222831; color:white;"type="text" name="name" class="form-control login-register-form-input" id="floatingInput" placeholder="Name">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">name</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="username" class="form-control login-register-form-input" id="floatingInput" placeholder="Username">
       <label style="color:white;"class="login-register-form-label" for="floatingInput">username</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="email" class="form-control login-register-form-input" id="floatingInput" placeholder="Email">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">email</label>
     </div>
     <div class="form-floating">
       <input style="background-color: #222831; color:white;"type="password" name="password1" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">

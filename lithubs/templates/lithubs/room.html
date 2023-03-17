@@ -5,7 +5,7 @@
 <div class="room-wrapper">
   <div class="room-host-container">
     <h1 class="room-name">{{ room.name }}</h1>
-    <span><img class="room-avatar-img" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+    <span><img class="room-avatar-img" src="{{ room.host.avatar.url }}"></span>
     <span class="room-host-name"><a style="color: var(--secondary-color); text-decoration:none;" href="{% url 'lithubs:profile' user.id %}">@{{ room.host }}</a></span>
     <span class="room-created">{{ room.created|timesince }} ago</span>
     <p class="room-description">{{ room.description }}</p>
@@ -14,7 +14,7 @@
     <div class="room-conversation-container">
       <p>Conversation</p>
       {% for message in room_messages %}
-      <span><img class="room-avatar-img" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+      <span><img class="room-avatar-img" src="{{ message.user.avatar.url }}"></span>
       <div class="room-vl"></div>
       <span class="room-message-host"><a style="color: var(--secondary-color); text-decoration: none;" href="{% url 'lithubs:profile' user.id %}">@{{ message.user }}</a></span>
       <span class="room-created">{{ message.created|timesince }} ago</span>
@@ -30,7 +30,7 @@
        <form class="room-form" method='POST' action="">
          {% csrf_token %} 
 	 <div>
-	  <input class="room-form-input" type="text" name="body" placeholder="Messaage">
+	   <input class="room-form-input" type="text" name="body" placeholder="> Messaage">
 	 </div>
       </form>
       {% endif %}

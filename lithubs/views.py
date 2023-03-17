@@ -3,10 +3,9 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from . forms import RepositoryForm, MyUserCreationForm, RoomForm
-from . models import Repository, Room, Topic, Message
+from . forms import RepositoryForm, MyUserCreationForm, RoomForm, UserForm
+from . models import Repository, Room, Topic, Message, User
 
 # Create your views here.
 
@@ -28,15 +27,15 @@ def login_page(request):
         return redirect('lithubs:index')
 
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email').lower()
         password = request.POST.get('password')
         
         try:
-            user = User.objects.get(username = username)
+            user = User.objects.get(email = email)
         except:
             messages.error(request, 'No such user')
 
-        user = authenticate(request, username = username, password = password)
+        user = authenticate(request, email = email, password = password)
 
         if user is not None:
             login(request, user)
@@ -227,3 +226,23 @@ def delete_message(request, pk):
         return redirect('lithubs:discussion')
 
     return render(request, 'lithubs/delete.html', {'obj' : message})
+
+@login_required(login_url = 'lithubs:login')
+def update_user(request):
+    user = request.user
+    form = UserForm(instance = user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance = user)
+        
+        if form.is_valid():
+            print('valid')
+            form.save()
+            return redirect('lithubs:profile', pk = user.id)
+        else:
+            print('invalid form')
+
+    context = {'form': form}
+
+    return render(request, 'lithubs/update-user.html', context)
+

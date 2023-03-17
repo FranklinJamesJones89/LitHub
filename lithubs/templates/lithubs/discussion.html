@@ -28,7 +28,7 @@
     <button class="discussion-create-btn" style="float: right; margin-top:-5%"><a style="float:right;"href="{% url 'lithubs:create-room' %}">Post</a></button>
     {% for room in rooms %}
       <div class="discussion-feed-container">
-	<span><img class="discussion-avatar" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+	      <span><img class="discussion-avatar" src="{{ room.host.avatar.url }}"></span>
 	<span class="discussion-feed-host"><a style="color: var(--secondary-color);" href="{% url 'lithubs:profile' user.id %}">@{{ room.host }}</a></span>
         <a class="discussion-room-name" href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
         <p class="discussion-description">{{ room.description }}</p>
@@ -55,7 +55,7 @@
     <div class="participants-box">
     {% for message in room_messages %}
       <div class="partcipants-details">
-	<span><img class="activity-avatar" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}"></span>
+	      <span><img class="activity-avatar" src="{{ user.avatar.url }}"></span>
         <span><a href="{% url 'lithubs:profile' user.id %}"class="participants-name">@{{ message.user }}</a></span>
 	<span class="activity-created">{{ message.created|timesince }} ago</span>
 	<p class="discussion-replied-to">replied to: "{{ message.room }}"</p>

@@ -1,7 +1,6 @@
 from django.forms import ModelForm
-from . models import Repository, Room
+from . models import Repository, Room, User
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 
 class RepositoryForm(ModelForm):
     class Meta:
@@ -12,7 +11,7 @@ class RepositoryForm(ModelForm):
 class MyUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ['name', 'username', 'email', 'password1', 'password2']
 
 class RoomForm(ModelForm):
     class Meta:
@@ -20,3 +19,7 @@ class RoomForm(ModelForm):
         fields = '__all__'
         exclude = ['host']
 
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar', 'name', 'username', 'email', 'bio']

@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'lithubs.User'
+
 ROOT_URLCONF = 'lithub.urls'
 
 TEMPLATES = [
@@ -120,11 +122,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/img/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'lithubs/static'
 ]
 
-print(STATICFILES_DIRS[0])
+MEDIA_ROOT = BASE_DIR / 'lithubs/static/lithubs/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

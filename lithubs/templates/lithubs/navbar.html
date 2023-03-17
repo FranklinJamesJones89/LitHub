@@ -21,12 +21,12 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		  <img class="nav-profile-img" src="{% static 'lithubs/img/franklin_and_bruce.jpeg' %}">
+		  <img class="nav-profile-img" src="{{ user.avatar.url }}">
           </a>
           <ul class="dropdown-menu" style="background-color: #222831; color:white;">
 	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">your profile</a></li>
 	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:repositories' user.id %}">your repositories</a></li>
-            <li><a style="color: var(--secondary-color)" class="dropdown-item" href="#">⚙️ settings</a></li>
+	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:update-user' %}">⚙️ settings</a></li>
             <li><hr class="dropdown-divider"></li>
 	    <li><a style="color:white;"class="dropdown-item" href="{% url 'lithubs:logout' %}">logout</a></li>
           </ul>
