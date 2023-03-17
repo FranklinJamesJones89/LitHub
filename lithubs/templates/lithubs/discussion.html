@@ -55,7 +55,7 @@
     <div class="participants-box">
     {% for message in room_messages %}
       <div class="partcipants-details">
-	      <span><img class="activity-avatar" src="{{ user.avatar.url }}"></span>
+	      <span><img class="activity-avatar" src="{{ message.user.avatar.url }}"></span>
         <span><a href="{% url 'lithubs:profile' user.id %}"class="participants-name">@{{ message.user.username }}</a></span>
 	<span class="activity-created">{{ message.created|timesince }} ago</span>
 	<p class="discussion-replied-to">replied to: "{{ message.room }}"</p>

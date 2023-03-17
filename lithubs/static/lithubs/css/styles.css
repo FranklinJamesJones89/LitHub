@@ -172,6 +172,10 @@ hr {
 		margin: 0 auto;
 		width: 50%;
 	}
+
+	.login-register-form-input {
+		width: 60%;
+	}
 }
 
 .login-register-form-icon {
@@ -242,6 +246,16 @@ hr {
 	border: 1px solid var(--azure);
 	transition: ease-in 5s;
 	font-size: 12px;
+	border-radius: 12px;
+	padding: 5px;
+}
+
+.profile-edit-form-btn {
+ margin-left: 4%;	
+ border: 1px solid var(--primary-color);
+ border-radius: 12px;
+ color: white;
+ background-color: var(--grey);
 }
 
 .profile-detail-container {

@@ -16,7 +16,21 @@ def profile(request, pk):
     user = User.objects.get(id = pk)
     repos = user.repository_set.all()[:6]
     
-    context = {'user': user, 'repos': repos}
+    user_profile = request.user
+    form = UserForm(instance = user_profile)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance = user_profile)
+        
+        if form.is_valid():
+            print('valid')
+            form.save()
+            return redirect('lithubs:profile', pk = user_profile.id)
+        else:
+            print('invalid form')
+
+    
+    context = {'user': user, 'repos': repos, 'form': form}
 
     return render(request, 'lithubs/profile.html', context)
 
