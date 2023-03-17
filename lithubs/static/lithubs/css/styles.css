@@ -4,6 +4,7 @@
 	--third-color: #222845;
 	--azure: #ffffff;
 	--grey: #808080;
+	--lightgrey: #E8E8E8;
 }
 
 hr {
@@ -234,25 +235,46 @@ hr {
 	color: white;
 }
 
+#profile-edit-form {
+	display:none;
+	background-color: var(--primary-color);
+	margin-top: 5%;
+	border: 1px solid var(--azure);
+	transition: ease-in 5s;
+	font-size: 12px;
+}
+
+.profile-detail-container {
+	margin-left: 15%;
+}
+
 .profile-name {
 	color: var(--azure);
 	font-size: 30px;
-	margin: 2% 0 0 12%;
 }
 
 .profile-username {
 	color: var(--grey);
 	font-size: 25px;
-	margin: 2% 0 0 12%;
+	margin-top: -10%;
 }
 
 .profile-bio {
-	color: var(--azure);
-	font-size: 20px;
-	margin: 2% 0 0 12%;
+	color: var(--lightgrey);
+	font-size: 18px;
+
 
 }
 
+.profile-edit-btn {
+	width: 100%;
+	background-color: var(--primary-color);
+	color: var(--azure);
+	font-size: 14px;
+	border: 1px solid var(--azure);
+	border-radius: 12px;
+	padding: 5px;
+}
 
 #repository-feed-synopsis {
 	color: var(--azure);

@@ -4,7 +4,7 @@
 <div style="width: 90%; margin:0 auto;"class="">
   {% for repo in repos %}
     <div class="feed-repo-container">
-	    <a href="{% url 'lithubs:profile' user.id %}" class="feed-repo-user">@{{ repo.user }}</a>
+      <a href="{% url 'lithubs:profile' user.id %}" class="feed-repo-user">@{{ repo.user.username }}</a>
       <p style="margin-top: 1%;"><a style="color: white; text-decoration: none;" href="{% url 'lithubs:repository' repo.id %}">{{ repo.title }}</a></p>
       <p id="repository-feed-synopsis">{{ repo.synopsis }}</p>
       <p class="repository-feed-genre">🟣 {{ repo.genre }}</p>

@@ -4,9 +4,14 @@ let currentYear = () => {
 	document.getElementById('date').innerHTML = `©️  ${date}`;
 };
 
-let onChange = () => {
-	document.getElementById('profile-menu').style.display = 'block';
+let editShow = () => {
+	document.getElementById('profile-edit-form').style.display = 'block';
+}
+
+let editHide = () => {
+	document.getElementById('profile-edit-form').style.display = 'none'
 }
 
 currentYear();
-onChange();
+editShow();
+editHide();

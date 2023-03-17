@@ -6,7 +6,7 @@
   <div class="room-host-container">
     <h1 class="room-name">{{ room.name }}</h1>
     <span><img class="room-avatar-img" src="{{ room.host.avatar.url }}"></span>
-    <span class="room-host-name"><a style="color: var(--secondary-color); text-decoration:none;" href="{% url 'lithubs:profile' user.id %}">@{{ room.host }}</a></span>
+    <span class="room-host-name"><a style="color: var(--secondary-color); text-decoration:none;" href="{% url 'lithubs:profile' user.id %}">@{{ room.host.username }}</a></span>
     <span class="room-created">{{ room.created|timesince }} ago</span>
     <p class="room-description">{{ room.description }}</p>
     <p class="room-topic">{{ room.topic }}</p>
@@ -16,7 +16,7 @@
       {% for message in room_messages %}
       <span><img class="room-avatar-img" src="{{ message.user.avatar.url }}"></span>
       <div class="room-vl"></div>
-      <span class="room-message-host"><a style="color: var(--secondary-color); text-decoration: none;" href="{% url 'lithubs:profile' user.id %}">@{{ message.user }}</a></span>
+      <span class="room-message-host"><a style="color: var(--secondary-color); text-decoration: none;" href="{% url 'lithubs:profile' user.id %}">@{{ message.user.username }}</a></span>
       <span class="room-created">{{ message.created|timesince }} ago</span>
       <p class="room-message">{{ message }}</p>
       {% if request.user == message.user %}

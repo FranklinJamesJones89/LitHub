@@ -5,10 +5,32 @@
 
 <div class="profile-wrapper">
 	<div class="profile-img-wrapper">
-		<img class="profile-img" src="{{ user.avatar.url }}" alt="avatar">
-	  <p class="profile-name" onClick="onChange()">{{ user.name }}</p>
-	  <p class="profile-username" onClick="onChange()">{{ user.username }}</p>
-	  <p class="profile-bio" onClick="onChange()">{{ user.bio }}</p>
+	  <img class="profile-img" src="{{ user.avatar.url }}" alt="avatar">
+	  <div class="profile-detail-container">
+	    <p class="profile-name" onClick="onChange()">{{ user.name }}</p>
+	    <p class="profile-username" onClick="onChange()">{{ user.username }}</p>
+	    <p class="profile-bio" onClick="onChange()">{{ user.bio }}</p>
+	    <button onClick="editShow()" class="profile-edit-btn">Edit profile</button>
+
+	  <div id="profile-edit-form">
+	    <form method='POST' action="" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    
+	    <div class="create-title-grid">
+
+	    <div class="form-floating">
+	      <p style="color: white; font-weight:bold;font-size: 14px; width:100%;">Name</p>
+	      <input style="background-color: #222831; color:white; border-radius:12px; padding: 5px;"type="text" name="name" id="floatingInput" placeholder="">
+	      <label style="color:white;"class=""></label>
+	    </div>
+
+	    </div>
+
+	    <button style="background-color: purple;"class="w-20 login-register-from-btn" value="Submit" type="submit">Save</button>
+	    <button onClick="editHide()"style="background-color: purple;"class="w-20  login-register-from-btn" value="Submit" type="submit">Cancel</button>
+	   </form>
+	  </div>
+	  </div>
 	</div>
 	
 	{% include 'lithubs/repository_feed_component.html' %}	
