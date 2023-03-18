@@ -4,24 +4,24 @@
   <div class="container-fluid">
     <img src="{% static 'lithubs/img/parchment.png' %}" style='width: 50px'>
     <a class="navbar-brand" style='color:white; font-size: 30px;' href="{% url 'lithubs:index' %}">LitHub</a>
-    <button style="color: white;"class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 	{% if request.user.is_authenticated %}
         <li class="nav-item">
-	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white'>Explore |</a>
+	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white; font-size: 18px;'>Explore |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white'>Discussion |</a>
+	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white; font-size: 18px;'>Discussion |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:create-repository' %}"class="nav-link" style='color:white'>Create |</a>
+	 <a href="{% url 'lithubs:create-repository' %}"class="nav-link" style='color:white; font-size: 18px;'>Create |</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		  <img class="nav-profile-img" src="{{ user.avatar.url }}">
+	    <img class="nav-profile-img" src="{{ user.avatar.url }}">
           </a>
           <ul class="dropdown-menu" style="background-color: #222831; color:white;">
 	    <li><a style="color: var(--secondary-color)" class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">your profile</a></li>
@@ -34,16 +34,16 @@
 
 	{% else %}
         <li class="nav-item">
-	  <a href="{% url 'lithubs:register' %}" class="nav-link" style='color:white'>Sign up |</a>
+	  <a href="{% url 'lithubs:register' %}" class="nav-link" style='color:white; font-size: 18px;'>Sign up |</a>
         </li>
         <li class="nav-item">
-		<a href="{% url 'lithubs:login' %}"class="nav-link" style='color:white'>Login |</a>
+		<a href="{% url 'lithubs:login' %}"class="nav-link" style='color:white; font-size: 18px;'>Login |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white'>Explore |</a>
+	 <a href="{% url 'lithubs:explore' %}"class="nav-link" style='color:white; font-size: 18px;'>Explore |</a>
         </li>
         <li class="nav-item">
-	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white'>Discussion |</a>
+	 <a href="{% url 'lithubs:discussion' %}"class="nav-link" style='color:white; font-size: 18px;'>Discussion |</a>
         </li>
 	{% endif %}
       <form class="d-flex" role="search" method="GET" action="{% url 'lithubs:discussion' %}">
