@@ -24,6 +24,12 @@
 	color: var(--azure);
 }
 
+.nav-avatar {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+}
+
 
 .dropdown-item {
 	color:white;
