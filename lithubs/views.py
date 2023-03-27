@@ -23,12 +23,9 @@ def profile(request, pk):
         form = UserForm(request.POST, request.FILES, instance = user_profile)
         
         if form.is_valid():
-            print('valid')
             form.save()
-            return redirect('lithubs:profile', pk = user_profile.id)
-        else:
-            print('invalid form')
 
+            return redirect('lithubs:profile', pk = user_profile.id)
     
     context = {'user': user, 'repos': repos, 'form': form}
 

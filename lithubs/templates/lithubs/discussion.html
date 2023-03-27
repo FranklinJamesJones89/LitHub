@@ -29,7 +29,7 @@
     {% for room in rooms %}
       <div class="discussion-feed-container">
 	      <span><img class="discussion-avatar" src="{{ room.host.avatar.url }}"></span>
-	<span class="discussion-feed-host"><a style="color: var(--secondary-color);" href="{% url 'lithubs:profile' user.id %}">@{{ room.host.username }}</a></span>
+	<span class="discussion-feed-host"><a style="color: var(--secondary-color);" href="{% url 'lithubs:profile' room.host.id %}">@{{ room.host.username }}</a></span>
         <a class="discussion-room-name" href="{% url 'lithubs:room' room.id %}">{{ room.name }}</a>
         <p class="discussion-description">{{ room.description }}</p>
 	

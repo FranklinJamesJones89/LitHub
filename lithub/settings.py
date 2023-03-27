@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'lithubs/static'
 ]
 
-MEDIA_ROOT = BASE_DIR / 'lithubs/static/lithubs/'
+MEDIA_ROOT = BASE_DIR / 'lithubs/static/lithubs/img'
 
 
 # Default primary key field type
