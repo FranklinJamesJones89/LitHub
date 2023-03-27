@@ -4,14 +4,15 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
   <img class="navbar-img" src="{% static 'lithubs/img/parchment.png' %}" alt="parchment">
-    <a class="navbar-brand" href="#" style="color: var(--azure); margin-left: 1%; font-size: 30px;">LitHub</a>
+    <a class="navbar-brand" href="{% url 'lithubs:index' %}" style="color: var(--azure); margin-left: 1%; font-size: 30px;">LitHub</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signout' %}">Sign out</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
@@ -28,6 +29,14 @@
           </ul>
         </li>
       </ul>
+      {% else %}
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      {% endif %}
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       </form>

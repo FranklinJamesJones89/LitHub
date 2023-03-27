@@ -7,8 +7,10 @@
 	--lightgrey: #E8E8E8;
 }
 
-hr {
-	color: white;
+/* Message Errors */
+.message-errors {
+	text-align: center;
+	color: var(--azure);
 }
 
 /* Navbar */
@@ -29,9 +31,9 @@ hr {
 
 /* main */
 .main {
-  margin-top: 15%; 
-  font-weight: bold;
-  color: white;
+	margin-top: 15%; 
+	font-weight: bold;
+	color: white;
 }
 
 .main-header {
@@ -110,5 +112,32 @@ hr {
 	left: 2%;
   }
 
+/* login-register form */
+.login-register-form {
+	margin: 0 auto;
+	width: 22%;
+}
 
+@media (max-width: 1000px;) {
+	.login-register-form {
+		margin: 0 auto;
+		width: 50%;
+	}
 
+	.login-register-form-input {
+		width: 60%;
+	}
+}
+
+.login-register-form-icon {
+	display: block;
+	margin:5% auto;
+}
+
+.login-register-form-input {
+	background-color: var(--primary-color);
+}
+
+#date {
+	text-align: center;
+}

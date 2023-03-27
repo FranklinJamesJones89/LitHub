@@ -15,9 +15,18 @@
 
 </head>
 <body id="bg"style="background-image:url('{% static "lithubs/img/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
-{% include 'lithubs/components/navbar.html' %}
+
+    {% include 'lithubs/components/navbar.html' %}
+
+{% if messages %}
+    {% for message in messages %}
+    <p class="message-errors">{{ message }}</p>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% block content %}
+
 
 {% endblock content %}
 
