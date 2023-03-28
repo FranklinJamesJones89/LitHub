@@ -24,7 +24,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if request.user.is_authenticated %}
         <li class="nav-item">
-	  <i class="fa fa-pen-to-square fa-2x"></i>
+	  <a href="{% url 'lithubs:repository-form' %}"><i class="fa fa-pen-to-square fa-2x"></i></a>
         </li>
         <li class="nav-item">
 	  <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
@@ -108,6 +108,8 @@
       </div>
 
       <div>
+      
+      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i class="fa-regular fa-trash-can"></i></a>
       <img class="feed-image"src="{{ repo.image.url }}">
       </div>
 

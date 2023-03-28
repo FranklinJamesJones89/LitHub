@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -83,3 +84,18 @@ def repository_form(request):
     context = {'form': form}
         
     return render(request, 'lithubs/components/forms/repository_form.html', context)
+
+@login_required(login_url = 'lithubs:signin')
+def delete_repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+
+    if request.user != repo.owner:
+        return HttpResponse('You can only delete your own repositories')
+
+    if request.method == 'POST':
+        repo.delete()
+        
+        return redirect('lithubs:feed')
+
+    return render(request, 'lithubs/delete_repository.html', {'obj': repo})
+
