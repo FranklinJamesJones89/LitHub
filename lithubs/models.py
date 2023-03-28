@@ -41,4 +41,12 @@ class LikeRepository(models.Model):
     def __str__(self):
         return self.username
 
-    
+class Comment(models.Model):
+    name = models.ForeignKey(User, on_delete = models.CASCADE)
+    repo = models.ForeignKey(Repository, on_delete = models.CASCADE)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add = True, null = True)
+    updated = models.DateTimeField(auto_now_add = True, null = True)
+
+    def __str__(self):
+        return self.body[:50]

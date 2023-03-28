@@ -218,3 +218,73 @@
 	border-radius: 12px;
 	padding: 5px;
 }
+
+
+/* Repository page */
+.repository-header-container {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	margin: 5% 5%;
+	color: var(--azure);
+}
+
+.repository-read-time{
+	margin-left: 2%;
+	font-size: 14px;
+	color: var(--grey);
+}
+.repository-owner-avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.repository-title h1 {
+	margin-top: 2%;
+	font-weight: bold;
+	font-size: 44px;
+	color: var(--azure);
+}
+
+.repository-more-container {
+	color: var(--azure);
+	font-weight: bold;
+}
+
+
+.repository-footer {
+	margin:0 auto;
+	width: 80%;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+}
+
+.repository-more-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.repository-more-synopsis {
+	font-size: 12px;
+	color: var(--grey);
+}
+
+.repository-more-details {
+	border: 1px solid var(--grey);
+	padding: 10px;
+}
+
+.repository-more-title {
+	font-size: 20px;
+
+}
+
+/* Footer */
+.footer-wrapper {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	margin-left: 10%;
+	color: var(--grey);
+}

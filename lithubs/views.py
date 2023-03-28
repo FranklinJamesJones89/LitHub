@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import MyUserCreationForm, RepositoryForm
-from .models import User, Repository, LikeRepository
+from .models import User, Repository, LikeRepository, Comment
 
 # Create your views here.
 
@@ -63,8 +63,9 @@ def register(request):
 
 def feed(request):
     repos = Repository.objects.all()
-
+    
     context = {'repos': repos}
+
     return render(request, 'lithubs/feed.html', context)
 
 @login_required(login_url = 'lithubs:signin')
@@ -147,7 +148,10 @@ def like_repo(request):
 
         return redirect('lithubs:feed')
 
+def repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+    repos = Repository.objects.all()
 
+    context = {'repo': repo, 'repos': repos}
 
-
-
+    return render(request, 'lithubs/repository.html', context)

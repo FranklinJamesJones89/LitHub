@@ -82,7 +82,7 @@
 
       <div>
       <br>
-      <h3>{{ repo.title }}</h3>
+      <a href="{% url 'lithubs:repository' repo.id %}"><h3>{{ repo.title }}</h3></a>
       <p>{{ repo.synopsis }}</p>
      	
       <!-- start inner grid -->
@@ -96,8 +96,8 @@
       <p style="color: grey;">posted {{ repo.created|timesince }} ago</p>
       <p style="color: grey;">updated {{ repo.updated|timesince }} ago</p>
       <p style="color: grey;">{{ repo.synopsis|length|div:200 }}  min read</p>
-      <a onsubmit="like(event)" href="/like_repo?repo_id={{ repo.id }}"><i style="color: var(--azure);"class="fa fa-hands-clapping fa-2x feed-icons"></i></a>
-
+      <a href="/like_repo?repo_id={{ repo.id }}"><i style="color: var(--azure);"class="fa fa-hands-clapping fa-2x feed-icons"></i></a>
+	
       <span>{{ repo.num_of_likes }}</span>
       </div>
 

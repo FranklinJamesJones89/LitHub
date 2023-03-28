@@ -1,7 +1,7 @@
 let currentYear = () => {
 	date = new Date().getFullYear();
 	console.log(date);
-	document.getElementById('date').innerHTML = `©️  ${date}`;
+	document.querySelector('.copyright').innerHTML = `©️  ${date}`;
 };
 
 let editShow = () => {
@@ -12,9 +12,7 @@ let editHide = () => {
 	document.getElementById('profile-edit-form').style.display = 'none'
 }
 
-let like = (event) {
-	event.preventDefault();
-}
+
 
 currentYear();
 editShow();
