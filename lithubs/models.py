@@ -35,5 +35,10 @@ class LikeRepository(models.Model):
     repo_id = models.CharField(max_length = 500)
     username = models.CharField(max_length = 200)
 
+    class Meta:
+        verbose_name_plural = 'likerepositories'
+
     def __str__(self):
         return self.username
+
+    

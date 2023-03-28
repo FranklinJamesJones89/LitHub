@@ -12,6 +12,7 @@ urlpatterns = [
     path('feed', views.feed, name = 'feed'),
     path('repository_form', views.repository_form, name = 'repository-form'),
     path('delete_repository/<str:pk>/', views.delete_repository, name = 'delete-repository'),
-    path('update_repository/<str:pk>/', views.update_repository, name = 'update-repository')
+    path('update_repository/<str:pk>/', views.update_repository, name = 'update-repository'),
+    path('like_repo', views.like_repo, name = 'like-repo')
 ]
 

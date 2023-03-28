@@ -12,6 +12,10 @@ let editHide = () => {
 	document.getElementById('profile-edit-form').style.display = 'none'
 }
 
+let like = (event) {
+	event.preventDefault();
+}
+
 currentYear();
 editShow();
 editHide();
