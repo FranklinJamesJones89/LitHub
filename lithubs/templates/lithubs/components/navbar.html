@@ -12,6 +12,12 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if request.user.is_authenticated %}
         <li class="nav-item">
+	  <i style="color: white;"class="fa fa-pen-to-square fa-2x feed-icons"></i>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
+        <li class="nav-item">
 	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signout' %}">Sign out</a>
         </li>
         <li class="nav-item dropdown">
@@ -19,14 +25,17 @@
             <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
           </a>
           <ul class="dropdown-menu" style="background-color: var(--primary-color);">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">your profile</a></li>
+            <li><a class="dropdown-item" href="#">your settings</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>
           </ul>
         </li>
       </ul>
       {% else %}
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
         <li class="nav-item">
 	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
         </li>

@@ -1,0 +1,17 @@
+{% extends 'lithubs/components/main.html' %}
+
+{% block content %}
+<p class="repo-create-header">Start writing as <b>{{ user.username }}</b></p>
+<p style="color: grey;" class="repo-create-header">Great title names are short and memorable *</p>
+<form class="repo-create-form" action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<label style="margin-left: 25%; color: var(--azure);">Companion pic</label>
+	<input type=file name="image" autofocus>
+	<input type=text name="title" placeholder="title" autofocus>
+	<input type=text name="synopsis" placeholder="synopsis" autofocus>
+	<input type=text name="genre" placeholder="genre" autofocus>
+	<input type=text name="form" placeholder="form" autofocus>
+	<input style="height:300px" type=text name="body" placeholder="body" autofocus>
+	<button class="repo-create-btn" type="submit" value="submit">Publish</button>
+</form>
+{% endblock content %}

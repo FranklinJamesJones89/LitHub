@@ -10,5 +10,6 @@ urlpatterns = [
     path('signout', views.logout_user, name = 'signout'),
     path('register', views.register, name = 'register'),
     path('feed', views.feed, name = 'feed'),
+    path('repository_form', views.repository_form, name = 'repository-form')
 ]
 

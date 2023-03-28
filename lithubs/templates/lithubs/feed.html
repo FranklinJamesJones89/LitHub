@@ -1,5 +1,137 @@
-{% extends 'lithubs/components/main.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load mathfilters %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="{% static 'lithubs/css/styles.css' %}">
+</head>
 
-{% endblock content %}
+<body class="feed-body">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+  <img class="navbar-img" src="{% static 'lithubs/img/parchment.png' %}" alt="parchment">
+    <a class="navbar-brand" href="{% url 'lithubs:index' %}" style="color: var(--azure); margin-left: 1%; font-size: 30px;">LitHub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+	  <i class="fa fa-pen-to-square fa-2x"></i>
+        </li>
+        <li class="nav-item">
+	  <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signout' %}">Sign out</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
+          </a>
+          <ul class="dropdown-menu" style="background-color: var(--primary-color);">
+            <li><a class="dropdown-item" href="#">your profile</a></li>
+            <li><a class="dropdown-item" href="#">your settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">Sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% else %}
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lithubs:register' %}">sign up</a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
+      {% endif %}
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Feed -->
+
+<div class="feed-header-container">
+  <h1>Trending</h1>
+</div>
+
+<div class="feed-grid-container">
+
+  <div class="feed-col-1">
+    <div>
+      {% for repo in repos %}
+      <hr>
+      <span><img class="feed-owner-avatar" src="{{ repo.owner.avatar.url }}"></span>
+      <span><b>{{ repo.owner }}</b></span>
+	
+      <!-- start inner grid -->
+      <div class="feed-owner-image-grid">
+
+      <div>
+      <br>
+      <h3>{{ repo.title }}</h3>
+      <p>{{ repo.synopsis }}</p>
+     	
+      <!-- start inner grid -->
+      <div class="feed-owner-image-grid">
+
+      <div>
+      <p>🟣 {{ repo.genre }}</p>
+      </div>
+
+      <div>
+      <p style="color: grey;">{{ repo.updated|timesince }} ago</p>
+      <p style="color: grey;">{{ repo.synopsis|length|div:200 }}  min read</p>
+      <i class="fa fa-hands-clapping fa-2x feed-icons"></i>
+      </div>
+
+      </div>
+      <!-- end inner grid -->
+
+      <p>🟠 {{ repo.form }}</p>
+      <br>
+      <hr>
+
+      </div>
+
+      <div>
+      <img class="feed-image"src="{{ repo.image.url }}">
+      </div>
+
+      </div>
+      <!--end inner grid -->
+
+    {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="feed-col-2">
+    <p>Staff Picks</p>
+    <hr>
+    {% for repo in repos %}
+    <div>
+      <span><img class="feed-owner-avatar" src="{{ repo.owner.avatar.url }}"></span>
+      <span><b>{{ repo.owner }}</b></span>
+     </div>
+     <br>
+      {% endfor %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/3ff46289c8.js" crossorigin="anonymous"></script>
+</body>
+</html>

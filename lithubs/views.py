@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import decorators
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MyUserCreationForm
-from .models import User
+from .forms import MyUserCreationForm, RepositoryForm
+from .models import User, Repository
 
 # Create your views here.
 
@@ -61,5 +61,25 @@ def register(request):
     return render(request, 'lithubs/components/forms/login_register.html')
 
 def feed(request):
-    context = {}
+    repos = Repository.objects.all()
+
+    context = {'repos': repos}
     return render(request, 'lithubs/feed.html', context)
+
+@login_required(login_url = 'lithubs:signin')
+def repository_form(request):
+    form = RepositoryForm()
+    
+    if request.method == 'POST':
+        form = RepositoryForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            repository = form.save(commit = False)
+            repository.owner = request.user
+            form.save()
+
+            return redirect('lithubs:feed')
+    
+    context = {'form': form}
+        
+    return render(request, 'lithubs/components/forms/repository_form.html', context)

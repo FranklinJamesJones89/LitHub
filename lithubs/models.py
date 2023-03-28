@@ -19,6 +19,7 @@ class Repository(models.Model):
     genre = models.CharField(max_length = 200)
     form = models.CharField(max_length = 200)
     body = models.TextField()
+    image = models.ImageField(null = True, default = 'default-repo-image.jpg')
     updated = models.DateTimeField(auto_now = True)
     created = models.DateTimeField(auto_now_add = True)
 

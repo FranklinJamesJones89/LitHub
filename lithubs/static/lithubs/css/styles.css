@@ -142,3 +142,80 @@
 #date {
 	text-align: center;
 }
+
+/* feed */
+.feed-body {
+	background-color: var(--primary-color);
+	color: var(--azure);
+}
+.feed-header-container {
+	color: var(--azure);
+}
+
+.feed-header-container h1 {
+	margin: 5% 5%;
+}
+
+.feed-grid-container {
+	font-size: 14px;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	margin:8% auto;
+}
+
+.feed-col-1 {
+	margin: 5% 5%;
+	width: 75%;
+}
+
+.feed-owner-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+
+.feed-owner-image-grid {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+}
+
+.feed-image {
+	margin-left: 25%;
+	width: 150px;
+	height: 150px;
+}
+
+.feed-icons {
+	margin-top: 10%;
+}
+
+.feed-col-2 p {
+	font-weight: bold;
+	font-size: 18px;
+	
+}
+
+/* Repository Form */
+.repo-create-header {
+	margin: 5% 25%;
+	color: var(--azure);
+}
+
+.repo-create-form input{
+	background-color: var(--primary-color);
+	color: var(--azure);
+	border: none;
+	outline: none;
+	margin: 2% 25%;
+}
+
+.repo-create-btn {
+	color: var(--azure);
+	border: 1px solid var(--azure);
+	background-color: var(--primary-color);
+	outline:none;
+	margin-left: 25%;
+	border-radius: 12px;
+	padding: 5px;
+}
