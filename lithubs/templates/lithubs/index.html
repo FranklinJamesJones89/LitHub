@@ -47,13 +47,13 @@
       </ul>
       {% else %}
         <li class="nav-item">
-	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
-        </li>
-        <li class="nav-item">
 	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'lithubs:register' %}">sign up</a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
       {% endif %}
       <form class="d-flex" role="search">

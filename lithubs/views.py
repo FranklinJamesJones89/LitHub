@@ -92,10 +92,36 @@ def delete_repository(request, pk):
     if request.user != repo.owner:
         return HttpResponse('You can only delete your own repositories')
 
-    if request.method == 'POST':
-        repo.delete()
-        
-        return redirect('lithubs:feed')
 
     return render(request, 'lithubs/delete_repository.html', {'obj': repo})
+
+@login_required(login_url = 'lithubs:signin')
+def update_repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+    
+    if repo.owner != request.user:
+        return HttpResponse('You can only delete your repositories')
+
+    if request.method == 'POST':
+        repo.delete()
+        return redirect('lithubs:feed')
+
+def update_repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+    form = RepositoryForm(instance = repo) 
+    
+    if repo.owner != request.user:
+        return HttpResponse('You can only update your own repositories')
+    
+    if request.method == 'POST':
+        form = RepositoryForm(request.POST, request.FILES, instance = repo) 
+        
+        if form.is_valid():
+            form.save()
+        
+            return redirect('lithubs:feed')
+
+    context = {'form': form}
+
+    return render(request, 'lithubs/components/forms/repository_form.html', context)
 

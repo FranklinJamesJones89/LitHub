@@ -108,8 +108,11 @@
       </div>
 
       <div>
-      
-      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i class="fa-regular fa-trash-can"></i></a>
+	
+      {% if user == repo.owner %}	      
+      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i style="color: grey;" class="fa-regular fa-trash-can"></i></a>
+      <a href="{% url 'lithubs:update-repository'  repo.id %}"><i style="color: grey;" class="fa fa-pen-to-square"></i></a>
+      {% endif %}
       <img class="feed-image"src="{{ repo.image.url }}">
       </div>
 
