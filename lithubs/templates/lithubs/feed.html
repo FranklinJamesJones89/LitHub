@@ -56,7 +56,7 @@
         </li>
       {% endif %}
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search LitHub" aria-label="Search">
       </form>
     </div>
   </div>
@@ -93,9 +93,11 @@
       </div>
 
       <div>
-      <p style="color: grey;">{{ repo.updated|timesince }} ago</p>
+      <p style="color: grey;">posted {{ repo.created|timesince }} ago</p>
+      <p style="color: grey;">updated {{ repo.updated|timesince }} ago</p>
       <p style="color: grey;">{{ repo.synopsis|length|div:200 }}  min read</p>
       <i class="fa fa-hands-clapping fa-2x feed-icons"></i>
+      <span>{{ repo.likes_count }}</span>
       </div>
 
       </div>
@@ -110,8 +112,8 @@
       <div>
 	
       {% if user == repo.owner %}	      
-      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i style="color: grey;" class="fa-regular fa-trash-can"></i></a>
       <a href="{% url 'lithubs:update-repository'  repo.id %}"><i style="color: grey;" class="fa fa-pen-to-square"></i></a>
+      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i style="color: grey;" class="fa-regular fa-trash-can"></i></a>
       {% endif %}
       <img class="feed-image"src="{{ repo.image.url }}">
       </div>

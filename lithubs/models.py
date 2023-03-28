@@ -14,12 +14,13 @@ class User(AbstractUser):
 
 class Repository(models.Model):
     owner = models.ForeignKey(User, on_delete = models.CASCADE)
-    title = models.CharField(max_length = 200)
-    synopsis = models.TextField()
-    genre = models.CharField(max_length = 200)
-    form = models.CharField(max_length = 200)
-    body = models.TextField()
-    image = models.ImageField(null = True, default = 'default-repo-image.jpg')
+    title = models.CharField(max_length = 200, blank = True)
+    synopsis = models.TextField(blank = True)
+    genre = models.CharField(max_length = 200, blank = True)
+    form = models.CharField(max_length = 200, blank = True)
+    body = models.TextField(blank = True)
+    image = models.ImageField(null = True, default = 'default-repo-image.jpg', blank = True)
+    num_of_likes = models.IntegerField(default = 0)
     updated = models.DateTimeField(auto_now = True)
     created = models.DateTimeField(auto_now_add = True)
 
@@ -29,3 +30,10 @@ class Repository(models.Model):
 
     def __str__(self):
         return self.title
+
+class LikeRepository(models.Model):
+    repo_id = models.CharField(max_length = 500)
+    username = models.CharField(max_length = 200)
+
+    def __str__(self):
+        return self.username
