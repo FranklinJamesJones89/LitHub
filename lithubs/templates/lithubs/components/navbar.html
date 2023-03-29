@@ -22,10 +22,12 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
+            <img class="nav-avatar" src="{{ request.user.avatar.url}}" alt="">
           </a>
           <ul class="dropdown-menu" style="background-color: var(--primary-color);">
-		  <li><a class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">your profile</a></li>
+		  {% if request.user.is_authenticated %}
+		  <li><a class="dropdown-item" href="{% url 'lithubs:profile' request.user.id %}">your profile</a></li>
+		  {% endif %}
             <li><a class="dropdown-item" href="#">your settings</a></li>
             <li><hr class="dropdown-divider"></li>
 	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>

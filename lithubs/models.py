@@ -20,8 +20,8 @@ class Repository(models.Model):
     form = models.CharField(max_length = 200, blank = True)
     body = models.TextField(blank = True)
     image = models.ImageField(null = True, default = 'default-repo-image.jpg', blank = True)
-    num_of_likes = models.IntegerField(default = 0)
-    num_of_comments = models.IntegerField(default = 0)
+    num_of_likes = models.IntegerField(default = 0, null = True, blank = True)
+    num_of_comments = models.IntegerField(default = 0, null = True, blank = True)
     updated = models.DateTimeField(auto_now = True)
     created = models.DateTimeField(auto_now_add = True)
 

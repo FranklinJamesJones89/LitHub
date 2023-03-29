@@ -14,8 +14,9 @@ def index(request):
 def profile(request, pk):
     user = User.objects.get(id = pk)
     repos = user.repository_set.all()
+    public_repos = Repository.objects.all()
 
-    context = {'user': user, 'repos': repos}
+    context = {'user': user, 'repos': repos, 'public_repos': public_repos}
 
     return render(request, 'lithubs/profile.html', context)
 
@@ -101,6 +102,10 @@ def delete_repository(request, pk):
     if request.user != repo.owner:
         return HttpResponse('You can only delete your own repositories')
 
+    if request.method == 'POST':
+        repo.delete()
+
+        return redirect('lithubs:feed')
 
     return render(request, 'lithubs/delete_repository.html', {'obj': repo})
 
