@@ -7,7 +7,7 @@
   <div>
     <hr>
     <span><img class="repository-owner-avatar" src="{{ repo.owner.avatar.url }}" alt="profile-pics"></span>
-    <span><b>{{ repo.owner.username }}</b></span>
+    <span><b><a class="repository-owner-link" href="{% url 'lithubs:profile' repo.owner.id %}">{{ repo.owner.username }}</a></b></span>
     <span class="repository-read-time">{{ repo.synopsis|length|div:200 }} min read</span>
 
     <div class="repository-title">
@@ -32,21 +32,15 @@
     {% for comment in repo_comments %}
     <div class="repository-more-details">
       <span><img class="repository-more-avatar" src="{{ comment.owner.avatar.url }}"></span>
-      <span><b>{{ comment.owner.username }}</b></span>	
+      <span><b><a class="repository-owner-link" href="{% url 'lithubs:profile' comment.owner.id %}">{{ comment.owner.username }}</a></b></span>	
       <p class="repository-more-title">"{{ comment.body }}"</p>
-      <a href="{% url 'lithubs:delete-comment' comment.id %}"><i class="fa-regular fa-trash-can"></i></a>
+      {% if request.user == comment.owner %}
+      <a href="{% url 'lithubs:delete-comment' comment.id %}"><i class="fa-regular fa-trash-can message-delete-icon"></i></a>
+      {% endif %}
     </div>
     {% endfor %}
 
-    <button onclick="showComments()" class="repository-more-details-btn">More comments</button>
-
-    {% for comment in repo_comments %}
-    <div class="repository-more-details-hidden">
-      <span><img class="repository-more-avatar" src="{{ comment.owner.avatar.url }}"></span>
-      <span><b>{{ comment.owner.username }}</b></span>	
-      <p class="repository-more-title">"{{ comment.body }}"</p>
-    </div>
-    {% endfor %}
+    <!--<button onclick="showComments()" class="repository-more-details-btn">More comments</button>-->
 
     </div>
 </div>

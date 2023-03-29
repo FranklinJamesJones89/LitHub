@@ -12,6 +12,9 @@ let editHide = () => {
 	document.getElementById('profile-edit-form').style.display = 'none'
 }
 
+let showComments =() => {
+	document.getElementById('repository-more-details-hidden').style.display = 'block';
+}
 
 currentYear();
 editShow();

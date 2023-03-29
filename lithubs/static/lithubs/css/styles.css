@@ -195,6 +195,16 @@
 	
 }
 
+.feed-owner-title {
+	text-decoration: none;
+	color: var(--azure);
+}
+
+.feed-owner-title a:hover {
+	background-color: none;
+	color: none;
+}
+
 /* Repository Form */
 .repo-create-header {
 	margin: 5% 25%;
@@ -274,7 +284,7 @@
 	padding: 10px;
 }
 
-.repository-more-details-hidden {
+#repository-more-details-hidden {
 	display: none;
 }
 
@@ -306,6 +316,11 @@
 	border-radius: 12px;
 }
 
+.repository-owner-link {
+	text-decoration: none;
+	color: var(--azure);
+}
+
 /* Footer */
 .footer-wrapper {
 	display: grid;
@@ -314,4 +329,13 @@
 	color: var(--grey);
 }
 
+/* Message Delete Form */
+.message-delete-form {
+	margin-top: 5%;
+	color: white;
+}
 
+.message-delete-icon {
+	color: var(--azure);
+	margin-left: 18%;
+}

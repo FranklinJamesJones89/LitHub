@@ -15,6 +15,7 @@ urlpatterns = [
     path('update_repository/<str:pk>/', views.update_repository, name = 'update-repository'),
     path('like_repo', views.like_repo, name = 'like-repo'),
     path('repository/<str:pk>/', views.repository, name = 'repository'),
-    path('delete_comment/<str:pk>/', views.delete_comment, name = 'delete-comment')
+    path('delete_comment/<str:pk>/', views.delete_comment, name = 'delete-comment'),
+    path('profile/<str:pk>', views.profile, name = 'profile')
 ]
 

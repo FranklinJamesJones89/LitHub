@@ -11,6 +11,14 @@ from .models import User, Repository, LikeRepository, Comment
 def index(request):
     return render(request, 'lithubs/index.html')
 
+def profile(request, pk):
+    user = User.objects.get(id = pk)
+    repos = user.repository_set.all()
+
+    context = {'user': user, 'repos': repos}
+
+    return render(request, 'lithubs/profile.html', context)
+
 def login_page(request):
     page = 'login'
     
@@ -151,7 +159,7 @@ def like_repo(request):
 def repository(request, pk):
     repo = Repository.objects.get(id = pk)
     repos = Repository.objects.all()
-    repo_comments = repo.comment_set.all()[:2]
+    repo_comments = repo.comment_set.all()
     
     form = CommentForm()
 
@@ -184,5 +192,5 @@ def delete_comment(request, pk):
 
         return redirect('lithubs:feed')
 
-    return render(request, 'lithubs:delete-comment', {'obj': comment })
+    return render(request, 'lithubs/delete_comment.html', {'obj': comment })
 
