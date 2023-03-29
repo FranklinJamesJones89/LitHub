@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MyUserCreationForm, RepositoryForm
+from .forms import MyUserCreationForm, RepositoryForm, CommentForm
 from .models import User, Repository, LikeRepository, Comment
 
 # Create your views here.
@@ -151,7 +151,38 @@ def like_repo(request):
 def repository(request, pk):
     repo = Repository.objects.get(id = pk)
     repos = Repository.objects.all()
+    repo_comments = repo.comment_set.all()[:2]
+    
+    form = CommentForm()
 
-    context = {'repo': repo, 'repos': repos}
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            comment = form.save(commit = False)
+            comment.owner = request.user
+            comment.repo = repo
+            form.save()
+        else:
+            print('not valid')
+
+            return redirect('lithubs:feed')
+
+    context = {'repo': repo, 'repos': repos, 'repo_comments' : repo_comments, 'form': form}
 
     return render(request, 'lithubs/repository.html', context)
+
+@login_required(login_url = 'lithubs:signin')
+def delete_comment(request, pk):
+    comment = Comment.objects.get(id = pk)
+
+    if request.user != comment.owner:
+        return HttpResponse(request, 'You are not the owner')
+
+    if request.method == 'POST':
+        comment.delete()
+
+        return redirect('lithubs:feed')
+
+    return render(request, 'lithubs:delete-comment', {'obj': comment })
+

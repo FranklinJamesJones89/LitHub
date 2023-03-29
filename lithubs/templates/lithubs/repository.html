@@ -1,44 +1,63 @@
 {% extends 'lithubs/components/main.html' %}
 {% load mathfilters %}
 {% block content %}
+
 <div class="repository-header-container">
-		<div>
-			<hr>
-			<span><img class="repository-owner-avatar" src="{{ repo.owner.avatar.url }}" alt="profile-pics"></span>
-			<span><b>{{ repo.owner.username }}</b></span>
-			<span class="repository-read-time">{{ repo.synopsis|length|div:200 }} min read</span>
 
-			<div class="repository-title">
-			<h1>{{ repo.title }}</h1>
-			<img class="repository-image" src="{{ repo.image.url }}" alt="book">
-			</div>
-			
-			<div>
-				<p>{{ repo.body }}</p>
-			</div>
-		</div>
+  <div>
+    <hr>
+    <span><img class="repository-owner-avatar" src="{{ repo.owner.avatar.url }}" alt="profile-pics"></span>
+    <span><b>{{ repo.owner.username }}</b></span>
+    <span class="repository-read-time">{{ repo.synopsis|length|div:200 }} min read</span>
 
-		<div class="repository-more-container">
-			<hr>
-			<p>More from LitHub</p>
-			{% for repo in repos %}
-			<div class="repository-more-details">
-			<span><img class="repository-more-avatar" src="{{ repo.owner.avatar.url }}"></span>
-			<span><b>{{ repo.owner.username }}</b></span>	
-      <a class="repository-more-title" href="{% url 'lithubs:repository' repo.id %}"><h3 class="repository-more-title">{{ repo.title }}</h3></a>
-			<p class="repository-more-synopsis">{{ repo.synopsis }}</p>
-			<div style="margin-left: -10%; border-left: 1px solid var(--grey); height: 100%;"></div>
-			</div>
-			<br>
-			{% endfor %}
-		</div>
+    <div class="repository-title">
+      <h1>{{ repo.title }}</h1>
+
+      <img class="repository-image" src="{{ repo.image.url }}" alt="book">
+      <p>{{ repo.body }}</p>
+    </div>
+
+   <div>
+  </div>
+  </div>
+
+  <div style="border-left: 1px solid grey; margin-top: 5%;"class="repository-more-container">
+    <hr>
+
+    <form class="repository-comment-form" action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="body" placeholder="Leave a comment">
+    </form>
+
+    {% for comment in repo_comments %}
+    <div class="repository-more-details">
+      <span><img class="repository-more-avatar" src="{{ comment.owner.avatar.url }}"></span>
+      <span><b>{{ comment.owner.username }}</b></span>	
+      <p class="repository-more-title">"{{ comment.body }}"</p>
+      <a href="{% url 'lithubs:delete-comment' comment.id %}"><i class="fa-regular fa-trash-can"></i></a>
+    </div>
+    {% endfor %}
+
+    <button onclick="showComments()" class="repository-more-details-btn">More comments</button>
+
+    {% for comment in repo_comments %}
+    <div class="repository-more-details-hidden">
+      <span><img class="repository-more-avatar" src="{{ comment.owner.avatar.url }}"></span>
+      <span><b>{{ comment.owner.username }}</b></span>	
+      <p class="repository-more-title">"{{ comment.body }}"</p>
+    </div>
+    {% endfor %}
+
+    </div>
 </div>
+
+
 
 <footer>
-<div class="repository-footer">
-<a href="/like_repo?repo_id={{ repo.id }}"><i style="color: var(--azure);"class="fa fa-hands-clapping fa-2x feed-icons"></i></a>
-<span style="margin-left: 2%; color: var(--azure);">{{ repo.num_of_likes }}</span>
-</div>
+  <div class="repository-footer">
+    <a href="/like_repo?repo_id={{ repo.id }}"><i style="color: var(--azure);"class="fa fa-hands-clapping fa-2x feed-icons"></i></a>
+    <span style="margin-left: 2%; color: var(--azure);">{{ repo.num_of_likes }}</span>
+  </div>
 </footer>
 
 {% include 'lithubs/components/footer.html' %}

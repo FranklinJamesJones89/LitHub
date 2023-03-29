@@ -1,0 +1,10 @@
+{% extends 'lithubs/components/main.html' %}
+
+{% block content %}
+<form  class="message-delete-form" action="" method="POST">
+	{% csrf_token %}
+	<p>Are you sure you want to delete {{ obj }}?</p>
+	<a href="{{ request.META.HTTP.REFERER }}">back</a>
+	<input type="submit" value="confirm">
+</form>
+{% endblock content %}
