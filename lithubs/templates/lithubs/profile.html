@@ -24,6 +24,11 @@
     <div>
     <p class="profile-inner-genre">🟣 {{ repo.genre }}</p>
     <p class="profile-inner-genre">🟠 {{ repo.form }}</p>
+
+      {% if user == repo.owner %}	      
+      <a href="{% url 'lithubs:update-repository'  repo.id %}"><i style="color: grey;" class="fa fa-pen-to-square"></i></a>
+      <a href="{% url 'lithubs:delete-repository'  repo.id %}"><i style="color: grey;" class="fa-regular fa-trash-can"></i></a>
+      {% endif %}
     </div>
 
     <div>
