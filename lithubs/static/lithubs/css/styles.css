@@ -118,13 +118,13 @@
 	width: 22%;
 }
 
-@media (max-width: 1000px;) {
+@media (max-width: 1000px) {
 	.login-register-form {
 		margin: 0 auto;
-		width: 50%;
+		width: 20%;
 	}
 
-	.login-register-form-input {
+	.login-register-form {
 		width: 60%;
 	}
 }
@@ -137,6 +137,7 @@
 .login-register-form-input {
 	background-color: var(--primary-color);
 }
+
 
 #date {
 	text-align: center;
@@ -162,6 +163,13 @@
 	margin:8% auto;
 }
 
+@media (max-width: 1000px) {
+	.feed-grid-container {
+		grid-template-columns: 1fr;
+	}
+
+}
+
 .feed-col-1 {
 	margin: 5% 5%;
 	width: 75%;
@@ -177,6 +185,10 @@
 .feed-owner-image-grid {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
+}
+
+@media (max-width: 1000px) {
+	grid-template-columns: 1fr;
 }
 
 .feed-image {
@@ -236,6 +248,12 @@
 	grid-template-columns: 3fr 1fr;
 	margin: 5% 5%;
 	color: var(--azure);
+}
+
+@media (max-width: 1000px) {
+	.repository-header-container {
+		grid-template-columns: 1fr;
+	}
 }
 
 .repository-read-time{
@@ -348,6 +366,12 @@
 	color: var(--azure);
 }
 
+@media (max-width: 1000px) {
+	.profile-grid-container {
+		grid-template-columns: 1fr;
+	}
+}
+
 .profile-grid-col-1-avatar {
 	width: 250px;
 	height: 250px;
@@ -410,4 +434,13 @@
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
+}
+
+#nav-toggler-btn {
+	background-color: white;
+	color: white;
+}
+
+.button.navbar-toggler-icon {
+	color: white;
 }
