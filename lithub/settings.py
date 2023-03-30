@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import cloudinary.uploader
 import cloudinary.api
+from secret_settings import *
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4wpt9)ay!z$rybpoiao4k+pydf63u45%7@b(gp6o@^lyu5!p&0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -57,11 +57,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-cloudinary.config (
-    cloud_name = 'dzn4wanoj',
-    api_key = '393939343296874',
-    api_secret = 'DlCSHmSorGU7byAng0ofDgIGqXc'
-)
 
 AUTH_USER_MODEL = 'lithubs.User'
 
