@@ -188,7 +188,7 @@ def repository(request, pk):
         else:
             print('not valid')
 
-            return redirect('lithubs:feed')
+            return redirect('lithubs:profile', id = pk)
 
     context = {'repo': repo, 'repos': repos, 'repo_comments' : repo_comments, 'form': form}
 
