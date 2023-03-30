@@ -133,7 +133,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/img/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'lithubs/static/'
+    BASE_DIR / 'staticfiles/'
 ]
 
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage' 
