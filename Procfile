@@ -1,1 +1,1 @@
-web: gunicorn lithubs.wsgi --log-file -
+web: gunicorn lithub.wsgi --log-file -
