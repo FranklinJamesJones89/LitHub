@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class User(AbstractUser):
     name = models.CharField(max_length = 200, null = True, blank = True)
     email = models.EmailField(unique = True, blank = True)
     bio = models.TextField(null = True, blank = True)
-    avatar = models.ImageField(null = True, default = 'avatar.svg', blank = True)
+    avatar = CloudinaryField(null = True, default = 'avatar.svg', blank = True)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -19,7 +20,7 @@ class Repository(models.Model):
     genre = models.CharField(max_length = 200, blank = True)
     form = models.CharField(max_length = 200, blank = True)
     body = models.TextField(blank = True)
-    image = models.ImageField(null = True, default = 'default-repo-image.jpg', blank = True)
+    image = CloudinaryField(null = True, default = 'default-repo-image.jpg', blank = True)
     num_of_likes = models.IntegerField(default = 0, null = True, blank = True)
     num_of_comments = models.IntegerField(default = 0, null = True, blank = True)
     updated = models.DateTimeField(auto_now = True)
