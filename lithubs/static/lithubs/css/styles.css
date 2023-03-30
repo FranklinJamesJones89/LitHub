@@ -349,9 +349,11 @@
 }
 
 .profile-grid-col-1-avatar {
-	width: 300px;
-	height: 300px;
+	width: 250px;
+	height: 250px;
 	border-radius: 50%;
+	display: block;
+	margin:0 auto;
 }
 
 .profile-grid-col-1-username {
@@ -403,3 +405,9 @@
 	color: grey;
 }
 
+/* Settings */
+.settings-avatar {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}

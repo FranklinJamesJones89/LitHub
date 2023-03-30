@@ -19,3 +19,8 @@ class CommentForm(ModelForm):
         model = Comment
         fields = '__all__'
         exclude = ['owner', 'repo']
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar', 'username', 'name', 'email', 'bio']

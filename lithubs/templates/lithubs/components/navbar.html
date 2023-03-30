@@ -28,7 +28,7 @@
 		  {% if request.user.is_authenticated %}
 		  <li><a class="dropdown-item" href="{% url 'lithubs:profile' request.user.id %}">your profile</a></li>
 		  {% endif %}
-            <li><a class="dropdown-item" href="#">your settings</a></li>
+		  <li><a class="dropdown-item" href="{% url 'lithubs:settings' %}">your settings</a></li>
             <li><hr class="dropdown-divider"></li>
 	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>
           </ul>

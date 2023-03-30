@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MyUserCreationForm, RepositoryForm, CommentForm
+from .forms import MyUserCreationForm, RepositoryForm, CommentForm, UserForm
 from .models import User, Repository, LikeRepository, Comment
 
 # Create your views here.
@@ -19,6 +19,25 @@ def profile(request, pk):
     context = {'user': user, 'repos': repos, 'public_repos': public_repos}
 
     return render(request, 'lithubs/profile.html', context)
+
+def settings(request):
+    user = request.user
+    form = UserForm(instance = user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance = user)
+
+        if form.is_valid():
+            print('valid')
+            form.save()
+            
+            return redirect('lithubs:profile', pk = user.id)
+        else:
+            print('not valid')
+
+    context = {'form': form}
+
+    return render(request, 'lithubs/components/forms/settings_form.html', context)
 
 def login_page(request):
     page = 'login'
@@ -107,19 +126,9 @@ def delete_repository(request, pk):
 
         return redirect('lithubs:feed')
 
-    return render(request, 'lithubs/delete_repository.html', {'obj': repo})
+    return render(request, 'lithubs/components/forms/delete_repository.html', {'obj': repo})
 
 @login_required(login_url = 'lithubs:signin')
-def update_repository(request, pk):
-    repo = Repository.objects.get(id = pk)
-    
-    if repo.owner != request.user:
-        return HttpResponse('You can only delete your repositories')
-
-    if request.method == 'POST':
-        repo.delete()
-        return redirect('lithubs:feed')
-
 def update_repository(request, pk):
     repo = Repository.objects.get(id = pk)
     form = RepositoryForm(instance = repo) 
@@ -197,5 +206,5 @@ def delete_comment(request, pk):
 
         return redirect('lithubs:feed')
 
-    return render(request, 'lithubs/delete_comment.html', {'obj': comment })
+    return render(request, 'lithubs/components/forms/delete_comment.html', {'obj': comment })
 

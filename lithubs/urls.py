@@ -16,6 +16,7 @@ urlpatterns = [
     path('like_repo', views.like_repo, name = 'like-repo'),
     path('repository/<str:pk>/', views.repository, name = 'repository'),
     path('delete_comment/<str:pk>/', views.delete_comment, name = 'delete-comment'),
-    path('profile/<str:pk>', views.profile, name = 'profile')
+    path('profile/<str:pk>', views.profile, name = 'profile'),
+    path('settings', views.settings, name = 'settings')
 ]
 
