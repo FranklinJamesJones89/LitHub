@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4wpt9)ay!z$rybpoiao4k+pydf63u45%7@b(gp6o@^lyu5!p&0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'lithubs',
+    'cloudinary',
+    'cloudinary_storage',
     'bootstrap5',
     'mathfilters',
     'django.contrib.admin',
@@ -52,6 +54,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dzn4wanoj',
+    'API_KEY': '393939343296874',
+    'API_SECRET': 'DlCSHmSorGU7byAng0ofDgIGqXc'
+}
 
 AUTH_USER_MODEL = 'lithubs.User'
 
@@ -127,6 +135,8 @@ MEDIA_URL = '/img/'
 STATICFILES_DIRS = [
     BASE_DIR / 'lithubs/static'
 ]
+
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage' 
 
 MEDIA_ROOT = BASE_DIR / 'lithubs/static/lithubs/img'
 
