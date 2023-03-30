@@ -57,11 +57,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dzn4wanoj',
-    'API_KEY': '393939343296874',
-    'API_SECRET': 'DlCSHmSorGU7byAng0ofDgIGqXc'
-}
+cloudinary.config (
+    cloud_name = 'dzn4wanoj',
+    api_key = '393939343296874',
+    api_secret = 'DlCSHmSorGU7byAng0ofDgIGqXc'
+)
 
 AUTH_USER_MODEL = 'lithubs.User'
 
