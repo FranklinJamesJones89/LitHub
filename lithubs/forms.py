@@ -23,4 +23,4 @@ class CommentForm(ModelForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['avatar', 'username', 'name', 'email', 'bio']
+        fields = ['avatar', 'username', 'name', 'bio']
