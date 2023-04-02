@@ -15,12 +15,7 @@ import cloudinary.uploader
 import cloudinary.api
 from pathlib import Path
 
-SECRET_KEY = 'django-insecure-4wpt9)ay!z$rybpoiao4k+pydf63u45%7@b(gp6o@^lyu5!p&0'
-
 cloudinary.config (
-    cloud_name = 'dzn4wanoj',
-    api_key = '393939343296874',
-    api_secret = 'DlCSHmSorGU7byAng0ofDgIGqXc'
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
