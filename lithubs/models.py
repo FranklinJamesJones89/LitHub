@@ -10,7 +10,6 @@ class User(AbstractUser):
     bio = models.TextField(null = True, blank = True)
     avatar = CloudinaryField(null = True, default = 'avatar.svg', blank = True)
     
-    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
 class Repository(models.Model):
