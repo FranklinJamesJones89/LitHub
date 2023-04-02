@@ -56,9 +56,6 @@
 	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
       {% endif %}
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search LitHub" aria-label="Search">
-      </form>
     </div>
   </div>
 </nav>
@@ -70,8 +67,7 @@
         <h1 class="main-header">Where Stories are Told</h1>
         <p class='main-sub-header'>The platform for writers to share their work with the world</p>
         <div class="input-group input-group-sm">
-          <a href="" class="main-signup span-btn input-group-text" id="inputGroup-sizing-lg" style="background-color: light grey; border:none; color: black; text-decoration: none;">Sign up for LitHub</a>
-          <input type="text" placeholder="Email Address" class="main-signup form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+		<a href="{% url 'lithubs:register' %}" class="main-signup span-btn input-group-text" id="inputGroup-sizing-lg" style="background-color: light grey; border:none; color: black; text-decoration: none;">Sign up for LitHub</a>
         </div>
       </div>
     </div>
@@ -109,7 +105,7 @@
         <h1 class="hero-header display-5 fw-bold lh-1 mb-3">Give Your Writing a Home</h1>
         <p class="lead">Tired of looking at unread manuscripts? Sign up for LitHub and create a repository where you can host, update, share, and maintain you work</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Sign up</button>
+		<button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a href="{% url 'lithubs:register' %}" style="color: white; text-decoration: none">Sign up</a></button>
         </div>
       </div>
     </div>
