@@ -6,7 +6,6 @@ from cloudinary.models import CloudinaryField
 
 class User(AbstractUser):
     name = models.CharField(max_length = 200, null = True, blank = True)
-    email = models.EmailField(unique = True, blank = True)
     bio = models.TextField(null = True, blank = True)
     avatar = CloudinaryField(null = True, default = 'avatar.svg', blank = True)
     
