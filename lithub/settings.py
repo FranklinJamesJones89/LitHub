@@ -150,3 +150,5 @@ if os.environ.get('DEBUG') == True:
     DEBUG = True
 elif os.environ.get('DEBUG') == False:
     DEBUG = False
+
+heroku config:set DISABLE_COLLECTSTATIC=1
