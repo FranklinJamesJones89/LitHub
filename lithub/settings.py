@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -29,10 +30,6 @@ SECRET_KEY = 'django-insecure-+4z(c(krxr3b3t2l&02ydx9ni9rv#36me_ejc^24ox=*v#&tsk
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-# Heroku
-import django_heroku
-django_heroku.settings(locals())
 
 # Cloudinary
 cloudinary.config (
@@ -149,3 +146,6 @@ MEDIA_ROOT = BASE_DIR / 'lithubs/static/lithubs/media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Heroku
+django_heroku.settings(locals())
