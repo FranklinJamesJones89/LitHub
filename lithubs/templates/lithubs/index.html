@@ -23,39 +23,39 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <!-- {% if request.user.is_authenticated %} -->
+        {% if request.user.is_authenticated %}
         <li class="nav-item">
 	<a href=""><i style="color: white;"class="fa fa-pen-to-square fa-2x feed-icons"></i></a>
         </li>
         <li class="nav-item">
-	      <!-- <a class="nav-link active" aria-current="page" href="">Feed</a> -->
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
         <li class="nav-item">
-	      <!-- <a class="nav-link active" aria-current="page" href="">Sign out</a> -->
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signout' %}">Sign out</a>
         </li>
         <li class="nav-item dropdown">
-          <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
-            <!-- <img class="nav-avatar" src="{{ user.avatar.url}}" alt=""> -->
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
           </a>
           <ul class="dropdown-menu" style="background-color: var(--primary-color);">
-		  <!-- <li><a class="dropdown-item" href="">your profile</a></li> -->
-		  <!-- <li><a class="dropdown-item" href="">your settings</a></li> -->
+            <li><a class="dropdown-item" href="">your profile</a></li>
+            <li><a class="dropdown-item" href="">your settings</a></li>
             <li><hr class="dropdown-divider"></li>
-	    <!-- <li><a class="dropdown-item" href="">sign out</a></li> -->
+            <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>
           </ul>
         </li>
       </ul>
-      <!-- {% else %} -->
+      {% else %}
         <li class="nav-item">
-	      <!-- <a class="nav-link active" aria-current="page" href="">Sign in</a> -->
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="">sign up</a> -->
+          <a class="nav-link" href="{% url 'lithubs:register' %}">sign up</a>
         </li>
         <li class="nav-item">
-	      <!-- <a class="nav-link active" aria-current="page" href="">Feed</a> -->
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
-      <!-- {% endif %} -->
+      {% endif %}
     </div>
   </div>
 </nav>
@@ -67,7 +67,7 @@
         <h1 class="main-header">Where Stories are Told</h1>
         <p class='main-sub-header'>The platform for writers to share their work with the world</p>
         <div class="input-group input-group-sm">
-		<!-- <a href="" class="main-signup span-btn input-group-text" id="inputGroup-sizing-lg" style="background-color: light grey; border:none; color: black; text-decoration: none;">Sign up for LitHub</a> -->
+		<a href="{% url 'lithubs:register' %}" class="main-signup span-btn input-group-text" id="inputGroup-sizing-lg" style="background-color: light grey; border:none; color: black; text-decoration: none;">Sign up for LitHub</a>
         </div>
       </div>
     </div>
@@ -105,7 +105,7 @@
         <h1 class="hero-header display-5 fw-bold lh-1 mb-3">Give Your Writing a Home</h1>
         <p class="lead">Tired of looking at unread manuscripts? Sign up for LitHub and create a repository where you can host, update, share, and maintain you work</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-		<button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a href="" style="color: white; text-decoration: none">Sign up</a></button>
+		<button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a href="{% url 'lithubs:register' %}" style="color: white; text-decoration: none">Sign up</a></button>
         </div>
       </div>
     </div>

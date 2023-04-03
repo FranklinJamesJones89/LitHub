@@ -1,0 +1,123 @@
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/ico" href="{% static 'lithubs/img/parchment.png' %}">
+<title>LitHub</title>
+
+<link rel="stylesheet" href="{% static 'lithubs/css/styles.css' %}">
+
+<!-- bootstrap -->
+{% bootstrap_css %}
+
+</head>
+
+<body id="bg"style="background-image:url('{% static "lithubs/media/resources/space.jpg" %}'); background-repeat:no-repeat; background-size:cover;">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+  <img class="navbar-img" src="{% static 'lithubs/media/resources/parchment.png' %}" alt="parchment">
+    <a class="navbar-brand" href="{% url 'lithubs:index' %}" style="color: var(--azure); margin-left: 1%; font-size: 30px;">LitHub</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+	<a href=""><i style="color: white;"class="fa fa-pen-to-square fa-2x feed-icons"></i></a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signout'}">Sign out</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
+          </a>
+          <ul class="dropdown-menu" style="background-color: var(--primary-color);">
+		  <li><a class="dropdown-item" href="">your profile</a></li>
+		  <li><a class="dropdown-item" href="">your settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+      {% else %}
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'lithubs:register' %}">sign up</a>
+        </li>
+        <li class="nav-item">
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
+        </li>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<!-- End Nav -->
+
+{% if page == 'login' %}
+<!-- Login -->
+<main class="form-signin w-100 m-auto">
+  <img class="mb-4 login-register-form-icon" src="{% static 'lithubs/media/resources/parchment.png' %}" alt="" width="72" height="57">
+  <form class="login-register-form" method="POST" action="">
+    {% csrf_token %}
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="email" class="form-control l    path('signout', views.logout_user, name = 'signout')ogin-register-form-input" id="floatingInput" placeholder="name@example.com">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">email</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="password" name="password" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">password</label>
+    </div>
+    <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Login" type="submit">Sign in</button>
+    <p style="text-align:center; color: white; margin-top: 2%;">Haven't signed up yet?</p>
+    <a style="margin-left: 40%; text-decoration: none; color: white;" href="{% url 'lithubs:register' %}">Sign up</a>
+    <p style="color:white;" id="date" class="mt-5 mb-3"></p>
+  </form>
+</main>
+
+{% else %}
+
+<!-- Register -->
+<img class="mb-4 login-register-form-icon" src="{% static 'lithubs/media/resources/parchment.png' %}" alt="" width="72" height="57">
+  <form style="color:white;"class="login-register-form" method="POST" action="">
+    {% csrf_token %}
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="name" class="form-control login-register-form-input" id="floatingInput" placeholder="Name">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">name</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="username" class="form-control login-register-form-input" id="floatingInput" placeholder="Username">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">username</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="text" name="email" class="form-control login-register-form-input" id="floatingInput" placeholder="Email">
+      <label style="color:white;"class="login-register-form-label" for="floatingInput">email</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="password" name="password1" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">password</label>
+    </div>
+    <div class="form-floating">
+      <input style="background-color: #222831; color:white;"type="password" name="password2" class="form-control login-register-form-input" id="floatingPassword" placeholder="Password">
+      <label style="color:white;" class="login-register-form-label"for="floatingPassword">confirm</label>
+    </div>
+    <button style="background-color: purple;"class="w-100 btn btn-lg btn-primary login-register-from-btn" value="Register" type="submit">Sign up</button>
+    <p style="text-align:center; color: white; margin-top: 2%;">Already have an account?</p>
+    <a style="margin-left: 40%; text-decoration: none; color: white;" href="{% url 'lithubs:signin' %}">Sign in</a>
+    <p style="color:white;" id="date" class="mt-5 mb-3"></p>
+  </form>
+
+  {% endif %}
+</body>
+</html>
+
