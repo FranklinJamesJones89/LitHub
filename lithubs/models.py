@@ -6,10 +6,10 @@ from cloudinary.models import CloudinaryField
 
 
 class User(AbstractUser):
-    name = models.CharField(max_length = 200, null = True)
+    name = models.CharField(max_length = 200, null = True, blank = True)
     email = models.EmailField(unique = True)
-    bio = models.TextField(null = True)
-    avatar = CloudinaryField(default = 'v1680540852/xrl5mtwt3wzqyh992ovs.svg')
+    bio = models.TextField(null = True, blank = True)
+    avatar = CloudinaryField(default = 'v1680540852/xrl5mtwt3wzqyh992ovs.svg', null = True, blank = True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
