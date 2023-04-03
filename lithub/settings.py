@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -32,6 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Heroku
+import django_heroku
 django_heroku.settings(locals())
 
 # Cloudinary
