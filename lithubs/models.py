@@ -34,3 +34,22 @@ class Repository(models.Model):
         return self.title    
 
 
+class LikeRepository(models.Model):
+    repo_id = models.CharField(max_length = 500)
+    username = models.CharField(max_length = 200)
+
+    class Meta:
+        verbose_name_plural = 'likerepositories'
+
+    def __str__(self):
+        return self.username
+
+class Comment(models.Model):
+    owner = models.ForeignKey(User, on_delete = models.CASCADE)
+    repo = models.ForeignKey(Repository, on_delete = models.CASCADE)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add = True)
+    
+    def __str__(self):
+        return self.body[:50]
+    

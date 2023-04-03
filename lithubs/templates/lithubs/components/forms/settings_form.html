@@ -1,0 +1,15 @@
+{% extends 'lithubs/components/main.html' %}
+{% load static %}
+{% block content %}
+<p class="repo-create-header">Edit your profile <b>{{ user.username }}</b></p>
+<form class="repo-create-form" action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<label style="margin-left: 25%; color: var(--azure);">Companion pic</label>
+	<img class="settings-avatar" src={{ request.user.avatar.url }}>
+	<input type=file name="avatar" autofocus>
+	<input type=text name="name" placeholder="name" autofocus>
+	<input type=text name="username" placeholder="username" autofocus>
+	<input type=text name="bio" placeholder="bio" autofocus>
+	<button class="repo-create-btn" type="submit" value="Submit">Edit</button>
+</form>
+{% endblock content %}

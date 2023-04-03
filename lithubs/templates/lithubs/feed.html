@@ -46,13 +46,13 @@
       </ul>
       {% else %}
         <li class="nav-item">
-	      <a class="nav-link active" aria-current="page" href="">Sign in</a>
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:signin' %}">Sign in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">sign up</a>
+          <a class="nav-link" href="{% url 'lithubs:register' %}">sign up</a>
         </li>
         <li class="nav-item">
-	      <a class="nav-link active" aria-current="page" href="">Feed</a>
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
       {% endif %}
     </div>
@@ -71,14 +71,14 @@
       {% for repo in repos %}
       <hr>
       <span><img class="feed-owner-avatar" src="{{ repo.owner.avatar.url }}"></span>
-      <span><b><a class="repository-owner-link" href="#">{{ repo.owner.username }}</a></b></span>
+      <span><b><a class="repository-owner-link" href="{% url 'lithubs:profile' repo.owner.id %}">{{ repo.owner.username }}</a></b></span>
 	
       <!-- start inner grid -->
       <div class="feed-owner-image-grid">
 
       <div>
       <br>
-      <a class="feed-owner-title" href="#"><h3>{{ repo.title }}</h3></a>
+      <a class="feed-owner-title" href="{% url 'lithubs:repository' repo.id %}"><h3>{{ repo.title }}</h3></a>
       <p>{{ repo.synopsis }}</p>
      	
       <!-- start inner grid -->
