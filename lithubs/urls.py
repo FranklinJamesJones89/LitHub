@@ -6,6 +6,7 @@ app_name = 'lithubs'
 
 urlpatterns = [
     path('', views.index, name = 'index'),
+    path('feed', views.feed, name = 'feed'),
     path('profile/<str:pk>', views.profile, name = 'profile'),
     path('repository/<str:pk>', views.repository, name = 'repository'),
     path('repository_form', views.repository_form, name = 'repository-form'),
@@ -16,6 +17,5 @@ urlpatterns = [
     path('delete_comment/<str:pk>/', views.delete_comment, name = 'delete-comment'),
     path('signin', views.login_page, name = 'signin'),
     path('signout', views.logout_user, name = 'signout'),
-    path('feed', views.feed, name = 'feed'),
     path('register', views.register, name = 'register')
 ]
