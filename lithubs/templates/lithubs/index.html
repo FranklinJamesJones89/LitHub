@@ -1,0 +1,15 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h1>hello</h1>
+	{% for users in user %}
+	<img src={{ users.avatar.url }}>
+	{% endfor %}
+</body>
+</html>
