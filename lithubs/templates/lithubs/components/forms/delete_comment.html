@@ -1,0 +1,10 @@
+{% extends 'lithubs/components/base.html' %}
+
+{% block content %}
+<form  class="message-delete-form" action="" method="POST">
+{% csrf_token %}
+<p style="color: var(--azure);">Are you sure you want to delete {{ obj }}?</p>
+<a style="color: var(--azure);"href="{{ request.META.HTTP.REFERER }}">back</a>
+<input type="submit" value="confirm">
+</form>
+{% endblock content %}

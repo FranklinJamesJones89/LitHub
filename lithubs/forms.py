@@ -26,3 +26,8 @@ class UserForm(ModelForm):
         model = User
         fields = ['avatar', 'username', 'name', 'bio']
 
+class RepositoryForm(ModelForm):
+    class Meta:
+        model = Repository
+        fields = '__all__'
+        exclude = ['owner']

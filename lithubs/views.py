@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import MyUserCreationForm, CommentForm, UserForm
-from .models import User, Repository
+from .forms import MyUserCreationForm, CommentForm, UserForm, RepositoryForm
+from .models import User, Repository, Comment, LikeRepository
 # Create your views here.
 
 def index(request):
@@ -138,3 +138,73 @@ def settings(request):
     context = {'form': form}
 
     return render(request, 'lithubs/components/forms/settings_form.html', context)
+
+@login_required(login_url = 'lithubs:signin')
+def delete_comment(request, pk):
+    comment = Comment.objects.get(id = pk)
+
+    if request.user != comment.owner:
+        return HttpResponse(request, 'You are not the owner')
+
+    if request.method == 'POST':
+        comment.delete()
+
+        return redirect('lithubs:feed')
+
+    return render(request, 'lithubs/components/forms/delete_comment.html', {'obj': comment })
+
+@login_required(login_url = 'lithubs:signin')
+def like_repo(request):
+    username = request.user.username
+    repo_id = request.GET.get('repo_id')
+    repo = Repository.objects.get(id = repo_id)
+
+    like_filter = LikeRepository.objects.filter(repo_id = repo_id, username = username).first()
+
+    if like_filter == None:
+        new_like = LikeRepository.objects.create(repo_id = repo_id, username = username)
+        new_like.save()
+        repo.num_of_likes = repo.num_of_likes + 1
+        repo.save()
+        
+        return redirect('lithubs:feed')
+    else:
+        like_filter.delete()
+        repo.num_of_likes = repo.num_of_likes - 1
+        repo.save()
+
+        return redirect('lithubs:feed')
+    
+@login_required(login_url = 'lithubs:signin')
+def delete_repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+
+    if request.user != repo.owner:
+        return HttpResponse('You can only delete your own repositories')
+
+    if request.method == 'POST':
+        repo.delete()
+
+        return redirect('lithubs:feed')
+
+    return render(request, 'lithubs/components/forms/delete_repository.html', {'obj': repo})
+
+@login_required(login_url = 'lithubs:signin')
+def update_repository(request, pk):
+    repo = Repository.objects.get(id = pk)
+    form = RepositoryForm(instance = repo) 
+    
+    if repo.owner != request.user:
+        return HttpResponse('You can only update your own repositories')
+    
+    if request.method == 'POST':
+        form = RepositoryForm(request.POST, request.FILES, instance = repo) 
+        
+        if form.is_valid():
+            form.save()
+        
+            return redirect('lithubs:feed')
+
+    context = {'form': form}
+
+    return render(request, 'lithubs/components/forms/repository_form.html', context)

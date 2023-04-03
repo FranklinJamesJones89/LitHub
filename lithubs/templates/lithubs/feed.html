@@ -24,23 +24,23 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         {% if request.user.is_authenticated %}
         <li class="nav-item">
-	<a href=""><i style="color: white;"class="fa fa-pen-to-square fa-2x feed-icons"></i></a>
+	<a href="{% url 'lithubs:repository-form' %}"><i style="color: white;"class="fa fa-pen-to-square fa-2x feed-icons"></i></a>
         </li>
         <li class="nav-item">
-	      <a class="nav-link active" aria-current="page" href="">Feed</a>
+	      <a class="nav-link active" aria-current="page" href="{% url 'lithubs:feed' %}">Feed</a>
         </li>
         <li class="nav-item">
 	      <a class="nav-link active" aria-current="page" href="">Sign out</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="{% url 'lithubs:profile' user.id %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="nav-avatar" src="{{ user.avatar.url}}" alt="">
           </a>
           <ul class="dropdown-menu" style="background-color: var(--primary-color);">
-		  <li><a class="dropdown-item" href="">your profile</a></li>
-		  <li><a class="dropdown-item" href="">your settings</a></li>
+		  <li><a class="dropdown-item" href="{% url 'lithubs:profile' user.id %}">your profile</a></li>
+		  <li><a class="dropdown-item" href="{% url 'lithubs:settings' %}">your settings</a></li>
             <li><hr class="dropdown-divider"></li>
-	    <li><a class="dropdown-item" href="">sign out</a></li>
+	    <li><a class="dropdown-item" href="{% url 'lithubs:signout' %}">sign out</a></li>
           </ul>
         </li>
       </ul>
@@ -129,7 +129,7 @@
     {% for repo in repos %}
     <div>
       <span><img class="feed-owner-avatar" src="{{ repo.owner.avatar.url }}"></span>
-      <span><b><a class="repository-owner-link" href="">{{ repo.owner.username }}</a></b></span>
+      <span><b><a class="repository-owner-link" href="{% url 'lithubs:profile' repo.owner.id %}">{{ repo.owner.username }}</a></b></span>
      </div>
      <br>
       {% endfor %}
