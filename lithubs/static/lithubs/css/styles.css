@@ -120,13 +120,10 @@
 
 @media (max-width: 1000px) {
 	.login-register-form {
-		margin: 0 auto;
-		width: 20%;
-	}
-
-	.login-register-form {
+		margin: 20% auto;
 		width: 60%;
 	}
+
 }
 
 .login-register-form-icon {
